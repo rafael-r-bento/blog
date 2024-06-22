@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "docs",
+            "outputPath": "dist/blog",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -87,6 +87,14 @@
               "src/styles.css"
             ],
             "scripts": []
+          }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+	  "options": {
+            "baseHref": "https://rafael-r-bento.github.io/blog/",
+            "name": "Rafael Bento",
+            "email": "rafael.bento@tuta.com"
           }
         }
       }
