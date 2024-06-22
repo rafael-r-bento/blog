@@ -1,0 +1,24 @@
+@font-face {
+  font-family: "Bungee Shade";
+  src: url("../../assets/fonts/BungeeShade-Regular.woff2") format('woff2');
+}
+
+header {
+    position: relative;
+    height: 100%;
+    line-height: 64px;
+    background-color: black;
+}
+
+.header-title {
+    text-decoration: none;
+    color: white;
+    background-color: transparent;
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-family: "Bungee Shade", sans-serif;
+}
+
+.logo {
+    text-align: center;
+}
