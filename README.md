@@ -9,3 +9,9 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The appli
 ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `docs/` directory.
+
+## Deploy
+
+First, change the `baseHref` to the correct GitHub pages address.
+
+Rn `ng deploy` to deploy the project.
