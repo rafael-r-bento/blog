@@ -92,7 +92,7 @@
         "deploy": {
           "builder": "angular-cli-ghpages:deploy",
 	  "options": {
-            "baseHref": "https://rafael-r-bento.github.io/blog/",
+            "baseHref": "https://rafael-r-bento.github.io/",
             "name": "Rafael Bento",
             "email": "rafael.bento@tuta.com"
           }
