@@ -15,7 +15,7 @@
 <p>For example of changes in source code, try add the lines indicated below on file
   <em>pluma/pluma-print-job.c</em> for adjust margins when print the file to PDF.</p>
 <pre><code class="sourcecode-name">pluma/pluma-print-job.c</code></pre>
-<pre><code class="sourcecode">
+<pre><code class="sourcecode" tabindex="0">
 /* More lines of source code in the original file */
 	  
 static void
@@ -63,7 +63,7 @@ create_compositor (PlumaPrintJob *job)
 <p>Install needed build-dependencies:</p>
 <pre><code class="terminal">sudo apt-get build-dep pluma</code></pre>
 <p>The following commands create a dedicated version of the build:</p>
-<pre><code class="terminal">dch -l local 'pluma with margins adjusted for print to PDF file'
+<pre><code class="terminal" tabindex="0">dch -l local 'pluma with margins adjusted for print to PDF file'
 dpkg-source --commit</code></pre>
 <p>The last command will prompt for a patch name and open the patch file created
   for modifications. Make the changes as you like, save the file and exit.</p>
@@ -73,7 +73,7 @@ dpkg-source --commit</code></pre>
 <pre><code class="terminal">sudo dpkg -i ../*.deb</code></pre>
 <p>The program with the changes made now should be installed in the OS.</p>
 <div class="img-with-copyright small-img">
-  <img src="/assets/pluma_installed.png">
+  <img src="/assets/pluma_installed.png" alt="Screen named About Pluma, present in Pluma application">
   <div class="img-license">
     <span>©
       <a target="_blank" href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>
@@ -83,6 +83,6 @@ dpkg-source --commit</code></pre>
   </div>
 </div>
 <h2>Apply a patch to the source code</h2>
-<pre><code class="terminal">cd pluma-1.24.0/
+<pre><code class="terminal" tabindex="0">cd pluma-1.24.0/
 patch --dry-run -ru -p1 &lt; ../pluma-margins-print-PDF.patch
 patch -ru -p1 &lt; ../pluma-margins-print-PDF.patch</code></pre>

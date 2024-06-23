@@ -8,7 +8,7 @@
 <pre><code class="terminal">$ pacman -S nginx</code></pre>
 <p>Configure <strong>nginx</strong> server:</p>
 <pre><code class="sourcecode-name">/etc/nginx/nginx.conf</code></pre>
-<pre><code class="sourcecode">
+<pre><code class="sourcecode" tabindex="0">
 user http;
 worker_processes auto;
 worker_cpu_affinity auto;
@@ -42,9 +42,9 @@ http {
 $ mkdir /etc/nginx/sites-enabled</code></pre>
 <p>Create the file <i>kanboard.conf</i> in <i>sites-available</i> folder and
   edit it:</p>
-<pre><code class="terminal">$ touch /etc/nginx/sites-available/kanboard.conf</code></pre></br>
-<pre><code class="sourcecode-name">/etc/nginx/sites-available/kanboard.conf</code></pre>
-<pre><code class="sourcecode">server {
+<pre><code class="terminal" tabindex="0">$ touch /etc/nginx/sites-available/kanboard.conf</code></pre></br>
+<pre><code class="sourcecode-name" tabindex="0">/etc/nginx/sites-available/kanboard.conf</code></pre>
+<pre><code class="sourcecode" tabindex="0">server {
     root /usr/share/nginx/kanboard;
 
     location / {
@@ -71,34 +71,34 @@ $ mkdir /etc/nginx/sites-enabled</code></pre>
     }
 }</code></pre>
 <p>Symlink <i>kanboard.conf</i> file in <i>sites-enabled</i> folder:</p>
-<pre><code class="terminal">$ ln -s /etc/nginx/sites-available/kanboard.conf /etc/nginx/sites-enabled/kanboard.conf</code></pre>
+<pre><code class="terminal" tabindex="0">$ ln -s /etc/nginx/sites-available/kanboard.conf /etc/nginx/sites-enabled/kanboard.conf</code></pre>
 <p>Clone the <strong>kanboard</strong> repository in appropriate folder:</p>
-<pre><code class="terminal">$ cd /usr/share/nginx/
+<pre><code class="terminal" tabindex="0">$ cd /usr/share/nginx/
 $ git clone https://github.com/kanboard/kanboard.git</code></pre>
 <p>Edit <i>php-fpm</i> service (using root):</p>
 <pre><code class="terminal"># systemctl edit php-fpm.service</code></pre></br>
-<pre><code class="sourcecode-name">/etc/systemd/system/php-fpm.service.d/override.conf partial file</code></pre>
-<pre><code class="sourcecode">[Service]
+<pre><code class="sourcecode-name" tabindex="0">/etc/systemd/system/php-fpm.service.d/override.conf partial file</code></pre>
+<pre><code class="sourcecode" tabindex="0">[Service]
 ReadWritePaths=/usr/share/nginx/kanboard/data</code></pre>
 <p>Install <strong>sqlite</strong> database:</p>
-<pre><code class="terminal">$ pacman -S php-sqlite
+<pre><code class="terminal" tabindex="0">$ pacman -S php-sqlite
 $ pacman -S php-gd</code></pre>
 <p>Edit <i>php.ini</i> file:</p>
 <pre><code class="sourcecode-name">/etc/php/php.ini partial file</code></pre>
-<pre><code class="sourcecode">extension=curl
+<pre><code class="sourcecode" tabindex="0">extension=curl
 extension=gd
 extension=pdo_sqlite
 extension=sqlite3
 extension=zip
 </code></pre>
 <p>Restart <i>php-fpm</i> and <i>nginx</i> services:</p>
-<pre><code class="terminal">$ systemctl restart php-fpm.service
+<pre><code class="terminal" tabindex="0">$ systemctl restart php-fpm.service
 $ systemctl restart nginx.service</code></pre>
 <p>Access <a href="http://localhost">http://localhost</a>. The default username and password is
   <strong>admin/admin</strong>.
 </p>
 <div class="img-with-copyright large-img">
-  <img src="/assets/kanboard_in_browser.png">
+  <img src="/assets/kanboard_in_browser.png" alt="Kanboard application being executed in browser">
   <div class="img-license">
     <span>©
       <a target="_blank" href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>

@@ -17,8 +17,18 @@
   }
 }
 
+@font-face {
+  font-family: "Bungee Shade";
+  src: url("../../assets/fonts/BungeeShade-Regular.woff2") format('woff2');
+}
+
+h1 {
+  font-family: "Bungee Shade", sans-serif;
+  text-align: center;  
+}
+
 .hidden {
-    display: none !important;
+  display: none !important;
 }
 
 .posts {
@@ -69,15 +79,15 @@ span.badge {
 }
 
 .orange {
-  background-color: #ff9800 !important;
+  background-color: #c35214 !important;
 }
 
 .blue {
-  background-color: #2196F3 !important;
+  background-color: #0a1172 !important;
 }
 
 .grey {
-  background-color: #9e9e9e !important;
+  background-color: #333333 !important;
 }
 
 .posts-search {
@@ -86,6 +96,10 @@ span.badge {
   position: relative;
   margin: 1.0rem auto 1.0rem;
   display: flex;
+}
+
+label {
+    display: block;
 }
 
 input#search {
@@ -97,6 +111,10 @@ input#search {
   border-radius: 5px;
   border-color: black;
   width: 100%;
+}
+
+input#search:focus {
+  background-color: lightblue;
 }
 
 button#clear-search {
@@ -112,4 +130,7 @@ button#clear-search {
 }
 button#clear-search:hover {
   color: #eee;
+}
+button#clear-search:focus {
+  background-color: lightblue;
 }

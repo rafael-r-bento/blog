@@ -1,22 +1,3 @@
-/*:host {
-    margin: 0 auto;
-    max-width: 1280px;
-    width: 90%;
-    flex: 0;
-}
-
-@media only screen and (min-width: 993px) {
-    :host {
-      width: 70%;
-    }
-}
-
-@media only screen and (min-width: 601px) {
-    :host {
-	width: 85%;
-    }
-}*/
-
 /* Code Blocks */
 
 pre {

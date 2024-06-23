@@ -47,9 +47,6 @@ export class HomeComponent {
     let search: HTMLInputElement = <HTMLInputElement>document.getElementById("search");
     let clearSearch: HTMLButtonElement = <HTMLButtonElement>document.getElementById("clear-search")
 
-    console.log(search);
-    console.log(clearSearch);
-
     search?.addEventListener("input", () => {
       const searchText = search.value.toLowerCase().trim().normalize('NFD').replace(/\p{Diacritic}/gu, "");
       const searchTerms = searchText.split(" ");

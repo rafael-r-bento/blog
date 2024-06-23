@@ -14,4 +14,6 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 First, change the `baseHref` to the correct GitHub pages address.
 
-Rn `ng deploy` to deploy the project.
+Run `ng deploy` to deploy the project.
+
+Change branch in `Settings > Pages` to `gh-pages` in "Build and deployment" and press the save button.
