@@ -20,7 +20,7 @@ export class PostComponent {
 
   ngOnInit() {
     const pageName = this.activateRoute.snapshot.paramMap.get('page');
-    this.http.get(`../../assets/${pageName}.html`, { responseType: 'text'}).subscribe(data => { this.content = data });
+    this.http.get(`/assets/${pageName}.html`, { responseType: 'text'}).subscribe(data => { this.content = data });
     Array.from(document.getElementsByTagName("app-post") as HTMLCollectionOf<HTMLElement>).forEach(post => { post.style.margin = "0 auto" });
     Array.from(document.getElementsByTagName("app-post") as HTMLCollectionOf<HTMLElement>).forEach(post => { post.style.maxWidth = "1280px" });
     Array.from(document.getElementsByTagName("app-post") as HTMLCollectionOf<HTMLElement>).forEach(post => { post.style.width = "90%" });
