@@ -43,6 +43,11 @@ h1 {
 .posts a.collection-item {
   display: block;
   text-decoration: none;
+  color: blue;
+}
+
+.posts a.collection-item:active {
+  color: blue;
 }
 
 .posts .collection-item {
@@ -99,7 +104,8 @@ span.badge {
 }
 
 label {
-    display: block;
+  margin-right: 1em;
+  flex: 1 0 auto;
 }
 
 input#search {
@@ -132,5 +138,5 @@ button#clear-search:hover {
   color: #eee;
 }
 button#clear-search:focus {
-  background-color: lightblue;
+  background-color: white;
 }
