@@ -8,4 +8,5 @@ export const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'home/:page', component: PostComponent },
   { path: 'jsinfo', component: JSInfoComponent },
+  { path: '**', pathMatch: 'full', component: HomeComponent },
 ];
