@@ -13,7 +13,7 @@
   </div>
   <div class="posts">
     @for (item of items; track item.title) {
-    <a routerLink="/home/{{ item.page }}" routerLinkActive="active" ariaCurrentWhenActive="page" class="collection-item posts-line">
+    <a routerLink="/post/{{ item.page }}" routerLinkActive="active" ariaCurrentWhenActive="page" class="collection-item posts-line">
       <span class="badge {{ chooseBadgeColor(item.category) }}"><strong>{{ item.category }}</strong></span>
       <strong>{{ item.title }}</strong>
     </a>
