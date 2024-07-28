@@ -65,12 +65,7 @@ $ sha256sum -c sha256sums.txt</code></pre>
 <h2>Installation</h2>
 <p>Install the base package, Linux kernel, firmware for common hardware and other
   packages of your choice:</p>
-<pre><code class="terminal"># pacstrap -K /mnt base linux linux-firmware nano grub efibootmgr</code></pre>
-<!--<p>Instal the NetworkManager service:</p>
-<pre><code class="terminal"># pacstrap /mnt networkmanager</code></pre>
-<p>Install the <strong>parabola-base</strong> meta-package:</p>
-<pre><code class="terminal"># pacstrap /mnt parabola-base</code></pre>
--->
+<pre><code class="terminal"># pacstrap -K /mnt base linux linux-firmware nano grub efibootmgr networkmanager iwd</code></pre>
 <h2>Configure the System</h2>
 <p>Generate an <strong>fstab</strong>:</p>
 <pre><code class="terminal"># genfstab -U /mnt >> /mnt/etc/fstab</code></pre>
@@ -83,10 +78,14 @@ $ sha256sum -c sha256sums.txt</code></pre>
 <p>Open the <i>/etc/locale.gen</i> file and uncomment the locale <i>en_US.UTF-8 UTF-8</i>.</p>
 <p>Generate the locale with the <strong>locale-gen</strong> command:</p>
 <pre><code class="terminal"># locale-gen</code></pre>
+<p>Create the file <i>/etc/NetworkManager/conf.d/wifi_backend.conf</i> like this:</p>
+<pre><code class="sourcecode-name">/etc/NetworkManager/conf.d/wifi_backend.conf</code></pre>
+<pre><code class="sourcecode">[device]
+wifi.backend=iwd</code></pre>
 <p>Create the file <i>/etc/locale.conf</i> like this:</p>
 <pre><code class="sourcecode-name">/etc/locale.conf</code></pre>
 <pre><code class="sourcecode">LANG=en_US.UTF-8</code></pre>
-<p>Create the file <i>/etc/vconsole.conf</i> and add console keymap preferences it:</p>
+<p>Create the file <i>/etc/vconsole.conf</i> and add console keymap preferences in it:</p>
 <pre><code class="sourcecode-name">/etc/vconsole.conf</code></pre>
 <pre><code class="sourcecode" tabindex="0">KEYMAP=br-abnt2</code></pre>
 <p>Create the file <i>/etc/hostname</i> like this:</p>
@@ -102,11 +101,6 @@ $ sha256sum -c sha256sums.txt</code></pre>
 <p>Install GRUB in the boot disk and generate an appropriate boot menu file:</p>
 <pre><code class="terminal" tabindex="0"># grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=grub --recheck
 # grub-mkconfig -o /boot/grub/grub.cfg</code></pre>
-<!--<p>Edit the <i>/etc/hosts</i> file like this:</p>
-<pre><code class="sourcecode-name">/etc/hosts</code></pre>
-<pre><code class="sourcecode" tabindex="0">127.0.0.1        localhost
-::1             localhost
-127.0.1.1       bentopc.localdomain     bentopc</code></pre>-->
 <h2>Reboot</h2>
 <p>Exit <strong>chroot</strong>, un-mount the partitions and reboot the system:</p>
 <pre><code class="terminal" tabindex="0"># exit
