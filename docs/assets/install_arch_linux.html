@@ -1,0 +1,139 @@
+<h1>Arch Linux Installation</h1>
+<time class="post-date" datetime="2024-07-28 03:00:00 -03">
+  28 Jul 2024
+</time>
+<p>This particular installation assumes boot in UEFI mode and SystemD init system. For detailed instructions, see
+  <a href="https://wiki.archlinux.org/title/Installation_guide">Installation Guide</a>.</p>
+<h2>Download</h2>
+<p>First, download the Arch Linux ISO and verify its signature and checksum.</p>
+<pre><code class="terminal" tabindex="0">$ wget https://archlinux.c3sl.ufpr.br/iso/2024.07.01/archlinux-2024.07.01-x86_64.iso
+$ wget https://archlinux.org/iso/2024.07.01/archlinux-2024.07.01-x86_64.iso.sig
+$ gpg --auto-key-locate clear,wkd -v --locate-external-key pierre@archlinux.org    
+$ gpg --keyserver-options auto-key-retrieve --verify archlinux-2024.07.01-x86_64.iso.sig
+$ wget https://archlinux.org/iso/2024.07.01/sha256sums.txt
+$ sha256sum -c sha256sums.txt</code></pre>
+<h2>Pre-installation</h2>
+<p>Write the Arch Linux ISO media to the USB flash drive (in this case, the device file for the USB drive is <i>/dev/sdb</i>;
+  verify the correct device file name before proceding to run the command below):</p>
+<pre><code class="terminal" tabindex="0"># dd bs=4M if=archlinux-2024.07.01-x86_64.iso of=/dev/sdb conv=fsync oflag=direct status=progress</code></pre>
+<p>Boot by pressing F11 or similar. Select "Arch Linux install medium (x86_64, UEFI)" from the live medium menu.</p>
+<div class="img-with-copyright normal-img">
+  <img src="/assets/install_archlinux1.png" alt="Step on boot installation showing five options:
+						 Arch Linux install medium (x86_64, UEFI);
+						 Arch Linux install medium (x86_64, UEFI) with speech;
+						 Memtest86+;
+						 EFI Shell;
+						 and Reboot Into Firmware Interface">
+  <div class="img-license">
+    <span>©
+      <a target="_blank" href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>
+      /
+      Rafael Bento
+    </span>
+  </div>
+</div>
+<p>Configure keyboard layout (for a list of keymaps, type <code>localectl list-keymaps</code>):</p>
+<pre><code class="terminal"># loadkeys br-abnt2</code></pre>
+<p>If you have wired internet access, just test the internet connection:</p>
+<pre><code class="terminal"># ping archlinux.org</code></pre>
+<p>If you have only wireless internet available, follow the instructions in
+  <a href="https://wiki.archlinux.org/title/Iwctl">iwctl</a>.</p>
+<p>Update the system clock:</p>
+<pre><code class="terminal"># timedatectl</code></pre>
+<p>Partition the HD/SSD by using <strong>cfdisk</strong> command.</p>
+<pre><code class="terminal"># cfdisk</code></pre>
+<div class="img-with-copyright normal-img">
+  <img src="/assets/install_archlinux2.png" alt="Screen showing the configuration for HD/SSD">
+  <div class="img-license">
+    <span>©
+      <a target="_blank" href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>
+      /
+      Rafael Bento
+    </span>
+  </div>
+</div>
+<p>List the partitions for verification with the <strong>fdisk</strong> command.</p>
+<pre><code class="terminal"># fdisk -l</code></pre>
+<p>Format the partitions:</p>
+<pre><code class="terminal"># mkfs.fat -F 32 /dev/sda1
+# mkswap /dev/sda2
+# mkfs.ext4 /dev/sda3</code></pre>
+<p>Mount the partitions:</p>
+<pre><code class="terminal"># mount /dev/sda3 /mnt
+# mount --mkdir /dev/sda1 /mnt/boot
+# swapon /dev/sda2</code></pre>
+<h2>Installation</h2>
+<p>Install the base package, Linux kernel, firmware for common hardware and other
+  packages of your choice:</p>
+<pre><code class="terminal"># pacstrap -K /mnt base linux linux-firmware nano grub efibootmgr</code></pre>
+<!--<p>Instal the NetworkManager service:</p>
+<pre><code class="terminal"># pacstrap /mnt networkmanager</code></pre>
+<p>Install the <strong>parabola-base</strong> meta-package:</p>
+<pre><code class="terminal"># pacstrap /mnt parabola-base</code></pre>
+-->
+<h2>Configure the System</h2>
+<p>Generate an <strong>fstab</strong>:</p>
+<pre><code class="terminal"># genfstab -U /mnt >> /mnt/etc/fstab</code></pre>
+<p><strong>chroot</strong> into the new system:</p>
+<pre><code class="terminal"># arch-chroot /mnt</code></pre>
+<p>Symlink <i>/etc/localtime</i> to <i>/usr/share/zoneinfo/Zone/SubZone</i>:</p>
+<pre><code class="terminal" tabindex="0"># ln -sf /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime</code></pre>
+<p>Run <strong>hwclock</strong> to generate <i>/etc/adjtime</i>:</p>
+<pre><code class="terminal"># hwclock --systohc</code></pre>
+<p>Open the <i>/etc/locale.gen</i> file and uncomment the locale <i>en_US.UTF-8 UTF-8</i>.</p>
+<p>Generate the locale with the <strong>locale-gen</strong> command:</p>
+<pre><code class="terminal"># locale-gen</code></pre>
+<p>Create the file <i>/etc/locale.conf</i> like this:</p>
+<pre><code class="sourcecode-name">/etc/locale.conf</code></pre>
+<pre><code class="sourcecode">LANG=en_US.UTF-8</code></pre>
+<p>Create the file <i>/etc/vconsole.conf</i> and add console keymap preferences it:</p>
+<pre><code class="sourcecode-name">/etc/vconsole.conf</code></pre>
+<pre><code class="sourcecode" tabindex="0">KEYMAP=br-abnt2</code></pre>
+<p>Create the file <i>/etc/hostname</i> like this:</p>
+<pre><code class="sourcecode-name">/etc/hostname</code></pre>
+<pre><code class="sourcecode">bentopc</code></pre>
+<p>Re-generate the initial RAM-disk:</p>
+<pre><code class="terminal"># mkinitcpio -P</code></pre>
+<p>Set a root password:</p>
+<pre><code class="terminal"># passwd</code></pre>
+<p>Create a normal user login and set a password:</p>
+<pre><code class="terminal" tabindex="0"># useradd -m bento
+# passwd bento</code></pre>
+<p>Install GRUB in the boot disk and generate an appropriate boot menu file:</p>
+<pre><code class="terminal" tabindex="0"># grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=grub --recheck
+# grub-mkconfig -o /boot/grub/grub.cfg</code></pre>
+<!--<p>Edit the <i>/etc/hosts</i> file like this:</p>
+<pre><code class="sourcecode-name">/etc/hosts</code></pre>
+<pre><code class="sourcecode" tabindex="0">127.0.0.1        localhost
+::1             localhost
+127.0.1.1       bentopc.localdomain     bentopc</code></pre>-->
+<h2>Reboot</h2>
+<p>Exit <strong>chroot</strong>, un-mount the partitions and reboot the system:</p>
+<pre><code class="terminal" tabindex="0"># exit
+# swapoff /dev/sda2
+# umount /mnt/boot
+# umount /mnt
+# reboot</code></pre>
+<h2>GNOME</h2>
+<p>Start and enable NetworkManager service:</p>
+<pre><code class="terminal" tabindex="0"># systemctl start NetworkManager
+# systemctl enable NetworkManager</code></pre>
+<p>Install GNOME desktop environment:</p>
+<pre><code class="terminal"># pacman -S gnome</code></pre>
+<p>Start <strong>gdm</strong> login screen:</p>
+<pre><code class="terminal"># systemctl start gdm</code></pre>
+<p>Set the <strong>gdm</strong> service to run on system boot:</p>
+<pre><code class="terminal" tabindex="0"># systemctl enable gdm
+# reboot</code></pre>
+<!--<h2>Conclusion</h2>
+<p>Arch Linux installed successfully.</p>
+<div class="img-with-copyright normal-img">
+  <img src="/assets/install_parabola3.png" alt="Main Parabola GNU/Linux screen with GNOME after installation">
+  <div class="img-license">
+    <span>©
+      <a target="_blank" href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>
+      /
+      Rafael Bento
+    </span>
+  </div>
+</div>-->

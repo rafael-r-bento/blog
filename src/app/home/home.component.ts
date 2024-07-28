@@ -36,6 +36,11 @@ export class HomeComponent {
       page: 'kanboard_installation',
       category: 'Software',
     },
+    {
+      title: 'Arch Linux Installation',
+      page: 'install_arch_linux',
+      category: 'Operating Systems',
+    },
   ].sort((a,b) => (a.title > b.title) ? 1 : ((b.title > a.title) ? -1 : 0));
   
   constructor(
