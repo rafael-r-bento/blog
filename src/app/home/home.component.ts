@@ -41,6 +41,11 @@ export class HomeComponent {
       page: 'install_arch_linux',
       category: 'Operating Systems',
     },
+    {
+      title: 'Setup an IRC bouncer on Raspberry Pi Zero 2 W',
+      page: 'irc_bouncer_rpi_zero2w',
+      category: 'Hardware',
+    },
   ].sort((a,b) => (a.title > b.title) ? 1 : ((b.title > a.title) ? -1 : 0));
   
   constructor(
