@@ -1,0 +1,39 @@
+{
+    "items": [
+        {
+            "title": "Build a Package from APT repository and Create a Patch",
+            "page": "build_from_source_with_apt",
+            "category": "Software"
+        },
+        {
+            "title": "Build and Test Parabola GNU/Linux-libre",
+            "page": "build_test_parabola",
+            "category": "Operating Systems"
+        },
+        {
+            "title": "Installing GNU Boot on ASUS P5Q Maiboard",
+            "page": "gnuboot_asus_p5q",
+            "category": "Hardware"
+        },
+        {
+            "title": "Parabola GNU/Linux-libre (x86_64) Installation",
+            "page": "install_parabola",
+            "category": "Operating Systems"
+        },
+        {
+            "title": "Kanboard Installation in a Pacman-Based Linux Distribution",
+            "page": "kanboard_installation",
+            "category": "Software"
+        },
+        {
+            "title": "Arch Linux Installation",
+            "page": "install_arch_linux",
+            "category": "Operating Systems"
+        },
+        {
+            "title": "Setup an IRC bouncer on Raspberry Pi Zero 2 W",
+            "page": "irc_bouncer_rpi_zero2w",
+            "category": "Hardware"
+        }
+    ]
+}

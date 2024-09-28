@@ -1,57 +1,27 @@
 import { Component, ElementRef, Inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { PostsRowsService } from '../posts-rows.service'
+import { Post, PostsRowsService } from '../posts-rows.service'
 
 @Component({
-    selector: 'app-home',
-    standalone: true,
-    imports: [RouterLink],
-    templateUrl: './home.component.html',
-    styleUrl: './home.component.css'
+  selector: 'app-home',
+  standalone: true,
+  imports: [RouterLink],
+  templateUrl: './home.component.html',
+  styleUrl: './home.component.css',
+  providers: [PostsRowsService],
 })
 export class HomeComponent {
-  items = [
-    {
-      title: 'Build a Package from APT repository and Create a Patch',
-      page: 'build_from_source_with_apt',
-      category: 'Software',
-    },
-    {
-      title: 'Build and Test Parabola GNU/Linux-libre',
-      page: 'build_test_parabola',
-      category: 'Operating Systems',
-    },
-    {
-      title: 'Installing GNU Boot on ASUS P5Q Maiboard',
-      page: 'gnuboot_asus_p5q',
-      category: 'Hardware',
-    },
-    {
-      title: 'Parabola GNU/Linux-libre (x86_64) Installation',
-      page: 'install_parabola',
-      category: 'Operating Systems',
-    },
-    {
-      title: 'Kanboard Installation in a Pacman-Based Linux Distribution',
-      page: 'kanboard_installation',
-      category: 'Software',
-    },
-    {
-      title: 'Arch Linux Installation',
-      page: 'install_arch_linux',
-      category: 'Operating Systems',
-    },
-    {
-      title: 'Setup an IRC bouncer on Raspberry Pi Zero 2 W',
-      page: 'irc_bouncer_rpi_zero2w',
-      category: 'Hardware',
-    },
-  ].sort((a,b) => (a.title > b.title) ? 1 : ((b.title > a.title) ? -1 : 0));
+  items: any;
   
   constructor(
     private elementRef: ElementRef<HTMLElement>,
     private postsService: PostsRowsService,
-  ) { }
+  ) {
+    this.postsService.listPosts().subscribe(response => {
+      this.items = (response as any).items;
+      this.items.sort((a: Post, b: Post) => (a.title > b.title) ? 1 : ((b.title > a.title) ? -1 : 0));
+    });
+  }
 
   ngOnInit() {
     let search: HTMLInputElement = <HTMLInputElement>document.getElementById("search");
