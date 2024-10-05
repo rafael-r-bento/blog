@@ -1,6 +1,6 @@
 import { Component, ElementRef, Inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { Post, PostsRowsService } from '../posts-rows.service'
+import { Post, PostsRowsService } from '../posts-rows.service';
 
 @Component({
   selector: 'app-home',
@@ -25,7 +25,6 @@ export class HomeComponent {
 
   ngOnInit() {
     let search: HTMLInputElement = <HTMLInputElement>document.getElementById("search");
-    let clearSearch: HTMLButtonElement = <HTMLButtonElement>document.getElementById("clear-search")
 
     search?.addEventListener("input", () => {
       const searchText = search.value.toLowerCase().trim().normalize('NFD').replace(/\p{Diacritic}/gu, "");
@@ -36,27 +35,19 @@ export class HomeComponent {
 	const searchString = post?.textContent?.toLowerCase().trim().normalize('NFD').replace(/\p{Diacritic}/gu, "");
 	const isMatch = searchTerms.every(term => searchString?.includes(term));
 
-	post.classList.toggle("hidden", !isMatch);
-      })
-    });
-
-    clearSearch?.addEventListener("click", () => {
-      if (search != undefined)
-	search.value = "";
-      
-      this.postsService.getRows().forEach(post => {
-	post.classList.toggle("hidden", false);
+	post.classList.toggle("d-none", !isMatch);
       })
     });
   }
 
   chooseBadgeColor(category: String) {
     if (category == 'Hardware')
-      return 'grey';
+      return 'text-bg-secondary';
     else if (category == 'Operating Systems')
-      return 'blue';
+      return 'text-bg-primary';
     else if (category == 'Software')
-      return 'orange';
-    else return 'black';
+      return 'text-bg-warning';
+    else
+      return 'text-bg-dark';
   }
 }

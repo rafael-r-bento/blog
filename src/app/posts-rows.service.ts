@@ -16,7 +16,7 @@ export class PostsRowsService {
   ) { }
 
   getRows() {
-    let posts: NodeListOf<Element> = document.querySelectorAll(".posts-line");
+    let posts: NodeListOf<Element> = document.querySelectorAll(".list-group-item");
     return posts;
   }
 

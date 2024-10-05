@@ -3,7 +3,8 @@ import { provideRouter, withRouterConfig, withComponentInputBinding } from '@ang
 import { provideHttpClient } from '@angular/common/http';
 
 import { routes } from './app.routes';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(routes, withRouterConfig({ onSameUrlNavigation: "reload", }), withComponentInputBinding()), provideHttpClient()]
+  providers: [provideRouter(routes, withRouterConfig({ onSameUrlNavigation: "reload", }), withComponentInputBinding()), provideHttpClient(), provideAnimationsAsync()]
 };

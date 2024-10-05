@@ -21,16 +21,7 @@ export class PostComponent {
   }
 
   ngOnInit() {
-    Array.from(document.getElementsByTagName("app-post") as HTMLCollectionOf<HTMLElement>).forEach(post => { post.style.margin = "0 auto" });
-    Array.from(document.getElementsByTagName("app-post") as HTMLCollectionOf<HTMLElement>).forEach(post => { post.style.maxWidth = "1280px" });
-    Array.from(document.getElementsByTagName("app-post") as HTMLCollectionOf<HTMLElement>).forEach(post => { post.style.width = "90%" });
     Array.from(document.getElementsByTagName("app-post") as HTMLCollectionOf<HTMLElement>).forEach(post => { post.style.flex = "1 0 auto" });
-
-    var width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
-
-    if (width >= 601)
-      Array.from(document.getElementsByTagName("app-post") as HTMLCollectionOf<HTMLElement>).forEach(post => { post.style.width = "85%" });
-    else if (width >= 993)
-      Array.from(document.getElementsByTagName("app-post") as HTMLCollectionOf<HTMLElement>).forEach(post => { post.style.width = "70%" });
   }
+
 }
