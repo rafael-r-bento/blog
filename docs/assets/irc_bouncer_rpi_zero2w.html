@@ -1,7 +1,170 @@
-<h1 class="mt-3 mb-3">Setup an IRC bouncer on Raspberry Pi Zero 2 W</h1>
-<time class="post-date" datetime="2024-10-05 09:00:00 -03">
-  05 Oct 2024
-</time>
-<h2 class="mt-3 mb-3">Hardware setup</h2>
-<h2 class="mt-3 mb-3">OS installation</h2>
-<h2 class="mt-3 mb-3">ZNC installation</h2>
+<h1>Setup an IRC bouncer on Raspberry Pi Zero 2 W</h1>
+<h2>Introduction</h2>
+<p>IRC bouncer is a middleman between your IRC client and an IRC network. It
+  connects to a network like a normal client and your client connect to the
+  IRC bouncer instead of connecting direcly to the IRC network. Usually you
+  would set it up to log and show for you the messages received while you
+  are "offline" (the IRC bouncer makes you stay always online).</p>
+<p>Raspberry Pi Zero 2 W is an embedded device that allows install various
+  GNU/Linux operating systems that supports it.</p>
+<p>Raspberry Pi Zero 2 W simplified diagram:</p>
+<pre>
+                     camera port
+                 ┌─────────────────┐
+            ┌────┤                 ├───┐
+            │  ○ └─────────────────┘ ○ │
+            │┌───┐                 ┌───┤
+            ││□ □│                 │   │ PWR IN
+            ││□ □│                 └───┤
+            ││□ □│                     │
+            ││□ □│                 ┌───┤
+            ││□ □│                 │   │ USB
+            ││□ □│                 └───┤
+            ││□ □│                     │
+            ││□ □│                     │
+            ││□ □│  ┌───────────┐      │
+            ││□ □│  │           │      │
+GPIO HEADER ││□ □│  │           │      │
+            ││□ □│  │ RP3A0-AU  │   .. │ WLAN + BLUETOOTH
+            ││□ □│  │           │   .. │
+            ││□ □│  │           │      │
+            ││□ □│  └───────────┘      │
+            ││□ □│                     │
+            ││□ □│             ┌───────┤
+            ││□ □│ ┌────────┐  │       │ mini HDMI port
+            ││□ □│ │        │  │       │
+            ││□ □│ │  ⋅     │  └───────┤
+            │└───┘ │  ¦     │          │
+            │ ○    └──¦─────┘        ○ │
+            └─────────¦────────────────┘
+                      ¦
+                      └-Micro SD slot
+</pre>
+<table>
+  <caption>Specifications</caption>
+  <tr>
+    <td>Processor</td>
+    <td>Broadcom BCM2710A1, quad-core 64-bit SoC (Arm Cortex-A53 @ 1GHz)</td>
+  </tr>
+  <tr>
+    <td>Memory</td>
+    <td>512MB LPDDR2</td>
+  </tr>
+  <tr>
+    <td>Connectivity</td>
+    <td>2.4GHz IEEE 802.11b/g/n wireless LAN, Bluetooth 4.2, BLE, onboard antenna</td>
+  </tr>
+  <tr>
+    <td>&#xa0;</td>
+    <td>1 x USB 2.0 interface with OTG</td>
+  </tr>
+  <tr>
+    <td>&#xa0;</td>
+    <td>HAT-compatible 40-pin I/O header footprint</td>
+  </tr>
+  <tr>
+    <td>&#xa0;</td>
+    <td>microSD card slot</td>
+  </tr>
+  <tr>
+    <td>&#xa0;</td>
+    <td>Mini HDMI port</td>
+  </tr>
+  <tr>
+    <td>&#xa0;</td>
+    <td>CSI-2 camera connector</td>
+  </tr>
+  <tr>
+    <td>Video</td>
+    <td>HDMI interface</td>
+  </tr>
+  <tr>
+    <td>&#xa0;</td>
+    <td>Composite video</td>
+  </tr>
+  <tr>
+    <td>Multimedia</td>
+    <td>H.264, MPEG-4 decode (1080p30)</td>
+  </tr>
+  <tr>
+    <td>&#xa0;</td>
+    <td>H.264 encode (1080p30)</td>
+  </tr>
+  <tr>
+    <td>&#xa0;</td>
+    <td>OpenGL ES 1.1, 2.0 graphics</td>
+  </tr>
+  <tr>
+    <td>Input power</td>
+    <td>5V DC 2.5A</td>
+  </tr>
+</table>
+<h2>Hardware setup</h2>
+<p>What you will need:</p>
+<ul>
+  <li>Raspberry Pi Zero 2 W</li>
+  <li>Micro SD card</li>
+  <li>Raspberry Pi Micro USB Power Supply</li>
+</ul>
+<h2>OS installation</h2>
+<p>Install <code>rpi-imager</code> package in your main computer.</p>
+<pre><code class="terminal"># pacman -S rpi-imager</code></pre>
+<p>Connect the micro SD card in a USB port. Launch <code>rpi-imager</code> and configure the
+  settings as appropriate.</p>
+<p>Safely remove the SD card from the main computer and install it in the Pi Zero.
+  With the card inserted, apply power via a USB cable to the PWR IN connector. You
+  should see some activity on the green LED light.</p>
+<p><code>ssh</code> into the Pi Zero:</p>
+<pre>$ ssh &lt;username&gt;@&lt;rpi-ip-address&gt;</pre>
+<p>Observation: run <code>nmap -sn 192.168.0.0/24</code> or equivalent to discover the ip
+  addresses of connected devices in the network.</p>
+<p>Update the system:</p>
+<pre><code class="terminal">sudo apt-get update
+sudo apt-get upgrade
+</code></pre>
+<h2>ZNC installation</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+Install the <code>znc</code> package:
+</p>
+<pre><code class="terminal">$ sudo apt-get install znc</code></pre>
+<p>
+Configure <code>znc</code> (datailed instructions can be found in <a href="https://wiki.znc.in/Configuration">https://wiki.znc.in/Configuration</a>):
+</p>
+<pre><code class="terminal">znc --makeconf</code></pre><br>
+<pre>
+-- Admin Settings --
+
+Username (alphanumeric): rafael_bento
+Enter password: ******** 
+Confirm password: ********
+Nick [rafael_bento]: 
+Alternate nick [rafael_bento_]: 
+Ident [rafael_bento]: 
+Real name (optional): Rafael Bento
+Bind host (optional): 
+
+Set up a network? (yes/no) [yes]: yes
+
+-- Network settings --
+ 
+Name [freenode]: libera
+Server host (host only): irc.libera.chat
+Server uses SSL? (yes/no) [no]: yes
+Server port (1 to 65535) [6697]: 6697
+Server password (probably empty): ********
+Initial channels: 
+</pre>
+<h2>ZNC Usage</h2>
+<p>Command to start ERC client inside GNU Emacs: <kbd>M-x erc-tls</kbd>.</p>
+<pre>
+M-x erc-tls
+
+IRC server: &lt;rpi-ip-address&gt;
+IRC port: 1025
+Nickname: rafael_bento
+Password: rafael_bento/libera:&lt;server-password&gt;
+</pre>
+<p>Access <code>https://&lt;rpi-ip-address&gt;:1025</code> in browser to log in ZNC server
+  to view and update configurations.</p>
+<p>For a complete list of ZNC commands, see <a href="https://wiki.znc.in/Using_commands">https://wiki.znc.in/Using_commands</a>.</p>

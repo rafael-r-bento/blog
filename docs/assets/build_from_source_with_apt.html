@@ -1,8 +1,4 @@
-<div class="container">
 <h1>Build a Package from APT repository and Create a Patch</h1>
-<time class="post-date" datetime="2023-03-30 23:49:58 -03">
-  30 Mar 2023
-</time> (updated in <time class="post-date" datetime="2024-02-13 04:55:00 -03">13 Feb 2024</time>)
 <p>In this post I use the software <strong>pluma</strong> for demonstration
   and a <strong>GNU/Linux</strong> operating system that uses
   <strong>APT</strong> package management.</p>
@@ -73,18 +69,8 @@ dpkg-source --commit</code></pre>
 <p>After finish the build without errors, install the package:</p>
 <pre><code class="terminal">sudo dpkg -i ../*.deb</code></pre>
 <p>The program with the changes made now should be installed in the OS.</p>
-<div class="img-with-copyright small-img">
-  <img src="/assets/pluma_installed.png" alt="Screen named About Pluma, present in Pluma application">
-  <div class="img-license">
-    <span>©
-      <a target="_blank" href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>
-      /
-      Rafael Bento
-    </span>
-  </div>
-</div>
+<img src="/assets/pluma_installed.png" class="normal-img" alt="Screen named About Pluma, present in Pluma application">
 <h2>Apply a patch to the source code</h2>
 <pre><code class="terminal" tabindex="0">cd pluma-1.24.0/
 patch --dry-run -ru -p1 &lt; ../pluma-margins-print-PDF.patch
-patch -ru -p1 &lt; ../pluma-margins-print-PDF.patch</code></pre>
-</div>
+patch -ru -p1 &lt; ../pluma-margins-print-PDF.patch</code></pre><br>

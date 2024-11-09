@@ -25,12 +25,9 @@
             ],
             "styles": [
               "src/custom-theme.scss",
-              "src/styles.css",
-              "node_modules/bootstrap/dist/css/bootstrap.min.css"
+              "src/styles.css"
             ],
-            "scripts": [
-              "node_modules/bootstrap/dist/js/bootstrap.min.js"
-            ]
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -46,15 +43,7 @@
                   "maximumError": "4kb"
                 }
               ],
-              "outputHashing": "all",
-              "optimization": {
-                "scripts": true,
-                "styles": {
-                  "minify": true,
-                  "inlineCritical": false
-                },
-                "fonts": true
-              }
+              "outputHashing": "all"
             },
             "development": {
               "optimization": false,

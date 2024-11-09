@@ -1,94 +1,66 @@
+:host {
+  flex: 1 0 auto !important;
+  margin: auto 1in;
+}
+
 /* Code Blocks */
 
-pre {
+:host ::ng-deep pre {
     margin-top: 0;
     margin-bottom: 0;
 }
 
-pre code {
+:host ::ng-deep pre code {
     font-family: monospace, monospace;
     display: block;
     overflow-x: auto;
     padding: 1em;
 }
 
-pre code.sourcecode-name {
+:host ::ng-deep pre code.sourcecode-name {
     background-color: #ebf1f5;
     border: 2px solid #bcd;
     border-bottom: none;
 }
 
-pre code.sourcecode {
+:host ::ng-deep pre code.sourcecode {
   background-color: #ebf1f5;
   border: 2px solid #bcd;
   border-top-style: dashed;
 }
 
-pre code.terminal {
+:host ::ng-deep pre code.terminal {
     color: white;
     background-color: black;
 }
 
-/* Image with Copyright Notice */
+/* Images */
 
-.img-with-copyright {
-    display: block;
-    position: relative;
-    margin: 24px 0;
-    margin-left: auto;
-    margin-right: auto;
+:host ::ng-deep img {
+  display: block;
+  position: relative;
+  width: 100%;
+  margin: 24px auto;
 }
 
-@media only screen and (max-width: 600px) {
-    .img-with-copyright {
-	width: 100%;
-    }
+:host ::ng-deep img.tiny-img {
+  max-width: 320px;
 }
 
-.img-with-copyright img {
-    vertical-align: middle;
-    width: 100%;
+:host ::ng-deep img.small-img {
+  max-width: 428px;
 }
 
-.img-license {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    background: rgba(0, 0, 0, 0.5);
-    color: #FFF;
-    font-size: 11px;
-    padding: 10px 20px;
-    text-align: center;
-    max-width: 297px;
-    margin: 0;
-    border: 0;
+:host ::ng-deep img.normal-img {
+  max-width: 640px;
 }
 
-.img-license span a {
-    text-decoration: none;
-    color: #FFF;
-    font-weight: bold;
+:host ::ng-deep img.large-img {
+  max-width: 960px;
 }
 
-.img-with-copyright.tiny-img {
-    max-width: 320px;
-}
+/* Tables */
 
-.img-with-copyright.small-img {
-    max-width: 428px;
-}
-
-.img-with-copyright.normal-img {
-    max-width: 640px;
-}
-
-.img-with-copyright.large-img {
-    max-width: 960px;
-}
-
-/* Post Date */
-
-.post-date {
-  font-weight: 800;
-  font-style: italic;
+:host ::ng-deep table {
+  border: 1px solid black;
 }

@@ -10,5 +10,17 @@
 h1 {
   font-family: "Bungee Shade", sans-serif;
   text-align: center;
-  font-weight: bold;
+}
+
+form {
+  text-align: center;
+}
+
+.mat-badge-content {
+  width: auto !important;
+  margin-left: 16px !important;
+}
+
+.hidden {
+  display: none;
 }

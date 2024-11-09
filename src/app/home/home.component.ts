@@ -1,11 +1,15 @@
 import { Component, ElementRef, Inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatListModule} from '@angular/material/list';
+import {MatBadgeModule} from '@angular/material/badge';
 import { Post, PostsRowsService } from '../posts-rows.service';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, MatFormFieldModule, MatInputModule, MatListModule, MatBadgeModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
   providers: [PostsRowsService],
@@ -35,19 +39,8 @@ export class HomeComponent {
 	const searchString = post?.textContent?.toLowerCase().trim().normalize('NFD').replace(/\p{Diacritic}/gu, "");
 	const isMatch = searchTerms.every(term => searchString?.includes(term));
 
-	post.classList.toggle("d-none", !isMatch);
+	post.classList.toggle("hidden", !isMatch);
       })
     });
-  }
-
-  chooseBadgeColor(category: String) {
-    if (category == 'Hardware')
-      return 'text-bg-secondary';
-    else if (category == 'Operating Systems')
-      return 'text-bg-primary';
-    else if (category == 'Software')
-      return 'text-bg-warning';
-    else
-      return 'text-bg-dark';
   }
 }

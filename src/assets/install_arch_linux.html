@@ -1,7 +1,4 @@
 <h1>Arch Linux Installation</h1>
-<time class="post-date" datetime="2024-07-28 03:00:00 -03">
-  28 Jul 2024
-</time>
 <p>This particular installation assumes boot in UEFI mode and SystemD init system. For detailed instructions, see
   <a href="https://wiki.archlinux.org/title/Installation_guide">Installation Guide</a>.</p>
 <h2>Download</h2>
@@ -17,21 +14,9 @@ $ sha256sum -c sha256sums.txt</code></pre>
   verify the correct device file name before proceding to run the command below):</p>
 <pre><code class="terminal" tabindex="0"># dd bs=4M if=archlinux-2024.07.01-x86_64.iso of=/dev/sdb conv=fsync oflag=direct status=progress</code></pre>
 <p>Boot by pressing F11 or similar. Select "Arch Linux install medium (x86_64, UEFI)" from the live medium menu.</p>
-<div class="img-with-copyright normal-img">
-  <img src="/assets/install_archlinux1.png" alt="Step on boot installation showing five options:
-						 Arch Linux install medium (x86_64, UEFI);
-						 Arch Linux install medium (x86_64, UEFI) with speech;
-						 Memtest86+;
-						 EFI Shell;
-						 and Reboot Into Firmware Interface">
-  <div class="img-license">
-    <span>©
-      <a target="_blank" href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>
-      /
-      Rafael Bento
-    </span>
-  </div>
-</div>
+<img src="/assets/install_archlinux1.png" class="large-img" alt="Step on boot installation showing five options:
+     Arch Linux install medium (x86_64, UEFI); Arch Linux install medium (x86_64, UEFI) with speech; Memtest86+;
+     EFI Shell; and Reboot Into Firmware Interface">
 <p>Configure keyboard layout (for a list of keymaps, type <code>localectl list-keymaps</code>):</p>
 <pre><code class="terminal"># loadkeys br-abnt2</code></pre>
 <p>If you have wired internet access, just test the internet connection:</p>
@@ -42,16 +27,7 @@ $ sha256sum -c sha256sums.txt</code></pre>
 <pre><code class="terminal"># timedatectl</code></pre>
 <p>Partition the HD/SSD by using <strong>cfdisk</strong> command.</p>
 <pre><code class="terminal"># cfdisk</code></pre>
-<div class="img-with-copyright normal-img">
-  <img src="/assets/install_archlinux2.png" alt="Screen showing the configuration for HD/SSD">
-  <div class="img-license">
-    <span>©
-      <a target="_blank" href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>
-      /
-      Rafael Bento
-    </span>
-  </div>
-</div>
+<img src="/assets/install_archlinux2.png" class="large-img" alt="Screen showing the configuration for HD/SSD">
 <p>List the partitions for verification with the <strong>fdisk</strong> command.</p>
 <pre><code class="terminal"># fdisk -l</code></pre>
 <p>Format the partitions:</p>
@@ -121,13 +97,4 @@ wifi.backend=iwd</code></pre>
 # reboot</code></pre>
 <h2>Conclusion</h2>
 <p>Arch Linux installed successfully.</p>
-<div class="img-with-copyright normal-img">
-  <img src="/assets/install_archlinux3.png" alt="Main Arch Linux screen with GNOME after installation">
-  <div class="img-license">
-    <span>©
-      <a target="_blank" href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>
-      /
-      Rafael Bento
-    </span>
-  </div>
-</div>
+<img src="/assets/install_archlinux3.png" class="large-img" alt="Main Arch Linux screen with GNOME after installation">
