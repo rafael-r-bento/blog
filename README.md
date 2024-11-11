@@ -10,4 +10,4 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The appli
 
 Run `npm run build` to build the project.
 
-Change folder in `Settings > Pages` to `/docs` in "Build and deployment" and press the save button.
+In GitHub, change folder in `Settings > Pages` to `/docs` in "Build and deployment" and press the save button.

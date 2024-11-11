@@ -9,7 +9,7 @@
   <mat-nav-list>
     @for (item of items; track item.title) {
     <a mat-list-item routerLink="/post/{{ item.page }}" routerLinkActive="active" ariaCurrentWhenActive="page" class="list-item">
-      <span matBadge="{{ item.category }}" matBadgeOverlap="false" matBadgeSize="large"><strong>{{ item.title }}</strong></span>
+      <strong>{{ item.title }}</strong>
     </a>
     }
   </mat-nav-list>
