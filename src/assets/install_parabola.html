@@ -15,15 +15,33 @@ $ sha512sum -c SHA512SUMS</code></pre>
 <pre><code class="terminal" tabindex="0">$ dd if=parabola-x86_64-systemd-cli-2022.04-netinstall.iso of=/dev/sdc bs=1M && sync</code></pre>
 <h2>Installation</h2>
 <p>Select "Parabola GNU/Linux-libre parabolaiso x86_64 UEFI CD" from the live medium menu.</p>
-<img src="/assets/install_parabola1.png" class="large-img" alt="Step on boot installation showing four options:
+<div class="img-with-copyright large-img">
+  <img src="/assets/install_parabola1.png" alt="Step on boot installation showing four options:
      Parabola GNU/Linux-libre parabolaiso x86_64 UEFI CD; UEFI Shell x86_64 v1; UEFI Shell x86_64 v2;
      and Reboot Into Firmware Interface">
+  <div class="img-license">
+    <span>©
+      <a target="_blank" href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>
+      /
+      Rafael Bento
+    </span>
+  </div>
+</div>
 <p>Select language and keyboard layout.</p>
 <p>Configure keyboard layout (for a list of keymaps, type <code>localectl list-keymaps</code>):</p>
 <pre><code class="terminal"># loadkeys br-abnt2</code></pre>
 <p>Partition the HD/SSD by using <strong>cfdisk</strong> command.</p>
 <pre><code class="terminal"># cfdisk</code></pre>
-<img src="/assets/install_parabola2.png" class="large-img" alt="Screen showing the configuration for HD/SSD">
+<div class="img-with-copyright large-img">
+  <img src="/assets/install_parabola2.png" alt="Screen showing the configuration for HD/SSD">
+  <div class="img-license">
+    <span>©
+      <a target="_blank" href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>
+      /
+      Rafael Bento
+    </span>
+  </div>
+</div>
 <p>List the partitions for verification with the <strong>fdisk</strong> command.</p>
 <pre><code class="terminal"># fdisk -l</code></pre>
 <p>Format the partitions:</p>
@@ -110,4 +128,13 @@ $ sha512sum -c SHA512SUMS</code></pre>
 # reboot</code></pre>
 <h2>Conclusion</h2>
 <p>Parabola GNU/Linux-libre installed successfully.</p>
-<img src="/assets/install_parabola3.png" class="large-img" alt="Main Parabola GNU/Linux screen with GNOME after installation">
+<div class="img-with-copyright large-img">
+  <img src="/assets/install_parabola3.png" alt="Main Parabola GNU/Linux screen with GNOME after installation">
+  <div class="img-license">
+    <span>©
+      <a target="_blank" href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>
+      /
+      Rafael Bento
+    </span>
+  </div>
+</div>

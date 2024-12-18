@@ -46,9 +46,9 @@
     background-color: black;
 }
 
-/* Images */
+/* Image with Copyright Notice */
 
-:host ::ng-deep img {
+/*:host ::ng-deep img {
   display: block;
   position: relative;
   width: 100%;
@@ -69,6 +69,61 @@
 
 :host ::ng-deep img.large-img {
   max-width: 960px;
+} */
+
+:host ::ng-deep .img-with-copyright {
+    display: block;
+    position: relative;
+    margin: 24px 0;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media only screen and (max-width: 600px) {
+    :host ::ng-deep .img-with-copyright {
+	width: 100%;
+    }
+}
+
+:host ::ng-deep .img-with-copyright img {
+    vertical-align: middle;
+    width: 100%;
+}
+
+:host ::ng-deep .img-license {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.5);
+    color: #FFF;
+    font-size: 11px;
+    padding: 10px 20px;
+    text-align: center;
+    max-width: 297px;
+    margin: 0;
+    border: 0;
+}
+
+:host ::ng-deep .img-license span a {
+    text-decoration: none;
+    color: #FFF;
+    font-weight: bold;
+}
+
+:host ::ng-deep .img-with-copyright.tiny-img {
+    max-width: 320px;
+}
+
+:host ::ng-deep .img-with-copyright.small-img {
+    max-width: 428px;
+}
+
+:host ::ng-deep .img-with-copyright.normal-img {
+    max-width: 640px;
+}
+
+:host ::ng-deep .img-with-copyright.large-img {
+    max-width: 960px;
 }
 
 /* Tables */
