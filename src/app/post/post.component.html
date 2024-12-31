@@ -1,2 +1,8 @@
-<main [innerHTML]="content">
-</main>
+@if (content) {
+  <main [innerHTML]="content">
+  </main>
+} @else {
+  <main>
+    <h1>Post not found</h1>
+  </main>
+}

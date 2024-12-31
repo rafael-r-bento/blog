@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PostService } from './post.service';
 
@@ -10,13 +10,22 @@ import { PostService } from './post.service';
   styleUrl: './post.component.css',
   providers: [PostService]
 })
-export class PostComponent {
-  content: string = '';
+export class PostComponent implements OnInit {
+  pageName: string | null = null;
+  content: string | null = null;
   constructor(
-    private activateRoute: ActivatedRoute,
+    private activatedRoute: ActivatedRoute,
     private postService: PostService
   ) {
-    const pageName = this.activateRoute.snapshot.paramMap.get('page') || "";
-    this.postService.getPageContent(pageName).subscribe(data => { this.content = data });
+
+  }
+
+  ngOnInit() {
+    this.pageName = this.activatedRoute.snapshot.paramMap.get('page');
+    if (this.pageName) {
+      this.postService.getPageContent(this.pageName).subscribe(
+        data => { this.content = data }
+      );
+    }
   }
 }
