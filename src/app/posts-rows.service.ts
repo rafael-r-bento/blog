@@ -1,10 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
+export interface Posts {
+  items: Post[];
+}
 
 export interface Post {
-  title: string,
-  page: string,
-  category: string,
+  title: string;
+  page: string;
+  category: string;
 }
 
 @Injectable({
@@ -20,7 +25,7 @@ export class PostsRowsService {
     return posts;
   }
 
-  listPosts() {
-    return this.http.get('assets/data_posts.json');
+  listPosts(): Observable<Posts> {
+    return this.http.get<Posts>('assets/data_posts.json');
   }
 }

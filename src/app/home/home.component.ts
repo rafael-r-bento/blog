@@ -4,7 +4,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatListModule} from '@angular/material/list';
 import {MatBadgeModule} from '@angular/material/badge';
-import { Post, PostsRowsService } from '../posts-rows.service';
+import { Posts, Post, PostsRowsService } from '../posts-rows.service';
 
 @Component({
   selector: 'app-home',
@@ -22,7 +22,7 @@ export class HomeComponent {
     private postsService: PostsRowsService,
   ) {
     this.postsService.listPosts().subscribe(response => {
-      this.items = (response as any).items;
+      this.items = (response as Posts).items;
       this.items.sort((a: Post, b: Post) => (a.title > b.title) ? 1 : ((b.title > a.title) ? -1 : 0));
     });
   }
@@ -36,8 +36,8 @@ export class HomeComponent {
       const hasFilter = searchText.length > 0;
 
       this.postsService.getRows().forEach(post => {
-	const searchString = post?.textContent?.toLowerCase().trim().normalize('NFD').replace(/\p{Diacritic}/gu, "");
-	const isMatch = searchTerms.every(term => searchString?.includes(term));
+        const searchString = post?.textContent?.toLowerCase().trim().normalize('NFD').replace(/\p{Diacritic}/gu, "");
+        const isMatch = searchTerms.every(term => searchString?.includes(term));
 
 	post.classList.toggle("hidden", !isMatch);
       })

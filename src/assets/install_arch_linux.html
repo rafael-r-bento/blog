@@ -57,9 +57,8 @@ $ sha256sum -c sha256sums.txt</code></pre>
 # mount --mkdir /dev/sda1 /mnt/boot
 # swapon /dev/sda2</code></pre>
 <h2>Installation</h2>
-<p>Install the base package, Linux kernel, firmware for common hardware and other
-  packages of your choice:</p>
-<pre><code class="terminal"># pacstrap -K /mnt base linux linux-firmware nano grub efibootmgr networkmanager iwd</code></pre>
+<p>Install the base package, Linux kernel, and other packages of your choice:</p>
+<pre><code class="terminal"># pacstrap -K /mnt base linux nano grub efibootmgr networkmanager iwd</code></pre>
 <h2>Configure the System</h2>
 <p>Generate an <strong>fstab</strong>:</p>
 <pre><code class="terminal"># genfstab -U /mnt >> /mnt/etc/fstab</code></pre>
