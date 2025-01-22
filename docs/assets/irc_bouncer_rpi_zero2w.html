@@ -8,38 +8,16 @@
 <p>Raspberry Pi Zero 2 W is an embedded device that allows install various
   GNU/Linux operating systems that supports it.</p>
 <p>Raspberry Pi Zero 2 W simplified diagram:</p>
-<pre>
-                     camera port
-                 ┌─────────────────┐
-            ┌────┤                 ├───┐
-            │  ○ └─────────────────┘ ○ │
-            │┌───┐                 ┌───┤
-            ││□ □│                 │   │ PWR IN
-            ││□ □│                 └───┤
-            ││□ □│                     │
-            ││□ □│                 ┌───┤
-            ││□ □│                 │   │ USB
-            ││□ □│                 └───┤
-            ││□ □│                     │
-            ││□ □│                     │
-            ││□ □│  ┌───────────┐      │
-            ││□ □│  │           │      │
-GPIO HEADER ││□ □│  │           │      │
-            ││□ □│  │ RP3A0-AU  │   .. │ WLAN + BLUETOOTH
-            ││□ □│  │           │   .. │
-            ││□ □│  │           │      │
-            ││□ □│  └───────────┘      │
-            ││□ □│                     │
-            ││□ □│             ┌───────┤
-            ││□ □│ ┌────────┐  │       │ mini HDMI port
-            ││□ □│ │        │  │       │
-            ││□ □│ │  ⋅     │  └───────┤
-            │└───┘ │  ¦     │          │
-            │ ○    └──¦─────┘        ○ │
-            └─────────¦────────────────┘
-                      ¦
-                      └-Micro SD slot
-</pre>
+<div class="img-with-copyright tiny-img">
+  <img src="/assets/rpi_zero2w_diagram.png" alt="Raspberry Pi Zero 2 W diagram">
+  <div class="img-license">
+    <span>©
+      <a target="_blank" href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>
+      /
+      Rafael Bento
+    </span>
+  </div>
+</div>
 <table>
   <caption>Specifications</caption>
   <tr>
@@ -108,7 +86,7 @@ GPIO HEADER ││□ □│  │           │      │
 </ul>
 <h2>OS installation</h2>
 <p>Install <code>rpi-imager</code> package in your main computer.</p>
-<pre><code class="terminal"># pacman -S rpi-imager</code></pre>
+<pre class="terminal"># pacman -S rpi-imager</pre>
 <p>Connect the micro SD card in a USB port. Launch <code>rpi-imager</code> and configure the
   settings as appropriate.</p>
 <p>Safely remove the SD card from the main computer and install it in the Pi Zero.
@@ -119,19 +97,21 @@ GPIO HEADER ││□ □│  │           │      │
 <p>Observation: run <code>nmap -sn 192.168.0.0/24</code> or equivalent to discover the ip
   addresses of connected devices in the network.</p>
 <p>Update the system:</p>
-<pre><code class="terminal">sudo apt-get update
+<pre class="terminal">sudo apt-get update
 sudo apt-get upgrade
-</code></pre>
+</pre>
+<p>Another option is to install Arch Linux ARM on this device. Instructions can
+  be found in: <a href="https://archlinuxarm.org/platforms/armv8/broadcom/raspberry-pi-zero-2">Raspberry Pi Zero 2 | Arch Linux ARM</a>.</p>
 <h2>ZNC installation</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 Install the <code>znc</code> package:
 </p>
-<pre><code class="terminal">$ sudo apt-get install znc</code></pre>
+<pre class="terminal">$ sudo apt-get install znc</pre>
 <p>
 Configure <code>znc</code> (datailed instructions can be found in <a href="https://wiki.znc.in/Configuration">https://wiki.znc.in/Configuration</a>):
 </p>
-<pre><code class="terminal">znc --makeconf</code></pre><br>
+<pre class="terminal">znc --makeconf</pre><br>
 <pre>
 -- Admin Settings --
 
@@ -156,10 +136,8 @@ Server password (probably empty): ********
 Initial channels: 
 </pre>
 <h2>ZNC Usage</h2>
-<p>Command to start ERC client inside GNU Emacs: <kbd>M-x erc-tls</kbd>.</p>
+<p>Command to start ERC client inside GNU Emacs: <code>M-x erc-tls</code>.</p>
 <pre>
-M-x erc-tls
-
 IRC server: &lt;rpi-ip-address&gt;
 IRC port: 1025
 Nickname: rafael_bento

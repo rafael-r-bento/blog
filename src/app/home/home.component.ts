@@ -1,4 +1,4 @@
-import { Component, ElementRef, Inject } from '@angular/core';
+import { Component, ElementRef } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
@@ -18,13 +18,9 @@ export class HomeComponent {
   items: any;
   
   constructor(
-    private elementRef: ElementRef<HTMLElement>,
     private postsService: PostsRowsService,
   ) {
-    this.postsService.listPosts().subscribe(response => {
-      this.items = (response as Posts).items;
-      this.items.sort((a: Post, b: Post) => (a.title > b.title) ? 1 : ((b.title > a.title) ? -1 : 0));
-    });
+    this.showPosts();
   }
 
   ngOnInit() {
@@ -33,7 +29,6 @@ export class HomeComponent {
     search?.addEventListener("input", () => {
       const searchText = search.value.toLowerCase().trim().normalize('NFD').replace(/\p{Diacritic}/gu, "");
       const searchTerms = searchText.split(" ");
-      const hasFilter = searchText.length > 0;
 
       this.postsService.getRows().forEach(post => {
         const searchString = post?.textContent?.toLowerCase().trim().normalize('NFD').replace(/\p{Diacritic}/gu, "");
@@ -41,6 +36,13 @@ export class HomeComponent {
 
 	post.classList.toggle("hidden", !isMatch);
       })
+    });
+  }
+
+  showPosts(): void {
+    this.postsService.listPosts().subscribe((response: Posts) => {
+      this.items = response.items;
+      this.items.sort((a: Post, b: Post) => (a.title > b.title) ? 1 : ((b.title > a.title) ? -1 : 0));
     });
   }
 }

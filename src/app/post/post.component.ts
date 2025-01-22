@@ -21,6 +21,10 @@ export class PostComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.loadPage();
+  }
+
+  loadPage() {
     this.pageName = this.activatedRoute.snapshot.paramMap.get('page');
     if (this.pageName) {
       this.postService.getPageContent(this.pageName).subscribe(

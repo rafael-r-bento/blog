@@ -1,5 +1,7 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { provideAnimations } from '@angular/platform-browser/animations';
+import { of } from 'rxjs';
+import { delay } from 'rxjs/operators';
 import { Posts, PostsRowsService } from '../posts-rows.service';
 
 import { HomeComponent } from './home.component';
@@ -9,17 +11,41 @@ describe('HomeComponent', () => {
   let component: HomeComponent;
   let fixture: ComponentFixture<HomeComponent>;
   let service: PostsRowsService;
+  let posts: Posts = { items: [
+    {
+      "title": "Parabola GNU/Linux-libre (x86_64) Installation",
+      "page": "install_parabola",
+      "category": "Operating Systems"
+    },
+    {
+      "title": "Arch Linux Installation",
+      "page": "install_arch_linux",
+      "category": "Operating Systems"
+    },
+    {
+      "title": "Arch Linux Installation",
+      "page": "install_arch_linux",
+      "category": "Operating Systems"
+    },
+    {
+      "title": "Build a Package from APT repository and Create a Patch",
+      "page": "build_from_source_with_apt",
+      "category": "Software"
+    }
+  ] };
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HomeComponent, HttpClientTestingModule],
-      providers: [provideAnimations()]
+      imports: [HttpClientTestingModule],
+      providers: [provideAnimations(), PostsRowsService]
     })
     .compileComponents();
+  });
 
+  beforeEach(() => {
     fixture = TestBed.createComponent(HomeComponent);
     component = fixture.componentInstance;
-    service = TestBed.inject(PostsRowsService);
+    service = fixture.debugElement.injector.get(PostsRowsService);
     fixture.detectChanges();
   });
 
@@ -28,8 +54,8 @@ describe('HomeComponent', () => {
   });
 
   it('should call listPosts and return list of posts', () => {
-    service.listPosts().subscribe((response: Posts) => {
-      expect(response.items).toBeDefined();
-    });
+    spyOn(service, 'listPosts').and.returnValue(of(posts));
+    component.showPosts();
+    expect(component.items).toEqual(posts.items);
   });
 });

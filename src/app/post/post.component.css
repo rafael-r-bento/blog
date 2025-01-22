@@ -15,61 +15,43 @@
   }
 }
 
+/* Code text */
+
+:host ::ng-deep code {
+  padding: 0 0.3em;
+  border-radius: 0;
+  background-color: #ebf1f5;
+}
+
 /* Code Blocks */
 
 :host ::ng-deep pre {
     margin-top: 0;
     margin-bottom: 0;
-}
-
-:host ::ng-deep pre code {
     font-family: monospace, monospace;
     display: block;
     overflow-x: auto;
     padding: 1em;
 }
 
-:host ::ng-deep pre code.sourcecode-name {
+:host ::ng-deep pre.sourcecode-name {
     background-color: #ebf1f5;
     border: 2px solid #bcd;
     border-bottom: none;
 }
 
-:host ::ng-deep pre code.sourcecode {
+:host ::ng-deep pre.sourcecode {
   background-color: #ebf1f5;
   border: 2px solid #bcd;
   border-top-style: dashed;
 }
 
-:host ::ng-deep pre code.terminal {
+:host ::ng-deep pre.terminal {
     color: white;
     background-color: black;
 }
 
 /* Image with Copyright Notice */
-
-/*:host ::ng-deep img {
-  display: block;
-  position: relative;
-  width: 100%;
-  margin: 24px auto;
-}
-
-:host ::ng-deep img.tiny-img {
-  max-width: 320px;
-}
-
-:host ::ng-deep img.small-img {
-  max-width: 428px;
-}
-
-:host ::ng-deep img.normal-img {
-  max-width: 640px;
-}
-
-:host ::ng-deep img.large-img {
-  max-width: 960px;
-} */
 
 :host ::ng-deep .img-with-copyright {
     display: block;

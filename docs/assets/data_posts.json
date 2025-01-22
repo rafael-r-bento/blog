@@ -6,11 +6,6 @@
             "category": "Software"
         },
         {
-            "title": "Build and Test Parabola GNU/Linux-libre",
-            "page": "build_test_parabola",
-            "category": "Operating Systems"
-        },
-        {
             "title": "Installing GNU Boot on ASUS P5Q Maiboard",
             "page": "gnuboot_asus_p5q",
             "category": "Hardware"
