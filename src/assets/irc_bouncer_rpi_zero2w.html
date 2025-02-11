@@ -84,34 +84,79 @@
   <li>Micro SD card</li>
   <li>Raspberry Pi Micro USB Power Supply</li>
 </ul>
-<h2>OS installation</h2>
-<p>Install <code>rpi-imager</code> package in your main computer.</p>
-<pre class="terminal"># pacman -S rpi-imager</pre>
-<p>Connect the micro SD card in a USB port. Launch <code>rpi-imager</code> and configure the
-  settings as appropriate.</p>
-<p>Safely remove the SD card from the main computer and install it in the Pi Zero.
-  With the card inserted, apply power via a USB cable to the PWR IN connector. You
-  should see some activity on the green LED light.</p>
-<p><code>ssh</code> into the Pi Zero:</p>
-<pre>$ ssh &lt;username&gt;@&lt;rpi-ip-address&gt;</pre>
-<p>Observation: run <code>nmap -sn 192.168.0.0/24</code> or equivalent to discover the ip
-  addresses of connected devices in the network.</p>
-<p>Update the system:</p>
-<pre class="terminal">sudo apt-get update
-sudo apt-get upgrade
+<h2>Arch Linux ARM installation</h2>
+<p>Connect the micro SD card in a USB port.</p>
+<p>Download script <code>install_archlinux_rpi.sh</code> and run with sudo rights:</p>
+<pre class="terminal">$ wget https://raw.githubusercontent.com/rafael-r-bento/install-archlinuxarm/refs/heads/master/install_archlinux_rpi.sh
+$ sudo ./install_archlinux_rpi.sh sdb</pre>
+<p>Observation: check the device name for the micro SD before include as argument
+for the script.</p>
+<p>Wait for the script execution to finish.</p>
+<p>Download packages <strong>iwd</strong> and <strong>ell</strong> from Arch Linux ARM website and put them in
+  <code>/home/alarm</code> folder, located in Ext4 partition from micro SD card.</p>
+<p>Remove the micro SD card from the main computer and insert it in the Pi
+  Zero. With the card inserted, apply power via a USB cable to the PWR IN
+  connector. You should see some activity on the green LED light. This means the
+  Pi Zero found a good OS image and is booting.</p>
+<h2>Arch Linux ARM initial setup</h2>
+<p>For this initial setup, connect keyboard and monitor.</p>
+<p>Default user and password: alarm. Default root password: root.</p>
+<p>Configure keyboard layout (for a list of keymaps, type
+  <code>localectl list-keymaps</code>):</p>
+<pre class="terminal"># loadkeys br-abnt2</pre>
+<p>Install the packages <strong>ell</strong> and <strong>iwd</strong>:</p>
+<pre class="terminal"># pacman -U ell-0.71-1-armv7h.pkg.tar.xz
+# pacman -U iwd-3.3-1-armv7h.pkg.tar.xz</pre>
+<p>Reboot the system:</p>
+<pre class="terminal"># reboot</pre>
+<p>Enable <strong>iwd</strong> service:</p>
+<pre class="terminal"># systemctl enable iwd.service</pre>
+<p>List all Wi-Fi devices:</p>
+<pre class="terminal"># iwctl device list</pre>
+<p>Connect to a network:</p>
+<blockquote># iwctl station <i>NAME</i> connect <i>SSID</i></blockquote>
+<pre class="terminal"># iwctl station wlan0 connect BENTO</pre>
+<p>Create and edit file <code>/etc/iwd/main.conf</code> to allows
+  <strong>iwd</strong> to assign IP addresses and setup routes using a built-in
+  DHCP client or with static configuration.</p>
+<pre class="sourcecode-name">/etc/iwd/main.conf</pre>
+<pre class="sourcecode" tabindex="0">
+[General]
+EnableNetworkConfiguration=true
 </pre>
+<p>Update the system clock:</p>
+<pre class="terminal"># timedatectl</pre>
+<p>Initialize the pacman keyring and populate the Arch Linux ARM package signing
+keys:</p>
+<pre class="terminal"># pacman-key --init
+# pacman-key --populate archlinuxarm</pre>
+<p>Update the system and reboot again:</p>
+<pre class="terminal"># pacman -Syu
+# reboot</pre>
+<p>You can disconnect the keyboard and monitor.</p>
+<h2>SSH connection</h2>
+<p>Command to ssh into the Pi Zero:</p>
+<blockquote>$ ssh <i>USERNAME</i>@<i>RPI-PI-ADDRESS</i></blockquote>
+<pre class="terminal">$ ssh alarm@192.168.0.22</pre>
+<p>Observation: run <code>nmap -sn 192.168.0.0/24</code> to discover the ip addresses of
+connected devices in the network.</p>
 <h2>ZNC installation</h2>
-<div class="outline-text-2" id="text-4">
 <p>
 Install the <code>znc</code> package:
 </p>
-<pre class="terminal">$ sudo apt-get install znc</pre>
+<pre class="terminal"># pacman -S znc</pre>
 <p>
 Configure <code>znc</code> (datailed instructions can be found in <a href="https://wiki.znc.in/Configuration">https://wiki.znc.in/Configuration</a>):
 </p>
-<pre class="terminal">znc --makeconf</pre><br>
+<pre class="terminal">$ znc --makeconf</pre><br>
 <pre>
--- Admin Settings --
+-- Global settings --
+
+Listen on port (1025 to 65534): 1025
+Listen using SSL (yes/no) [no]: yes
+Listen using both IPv4 and IPv6 (yes/no) [yes]: yes
+
+-- Admin user settings --
 
 Username (alphanumeric): rafael_bento
 Enter password: ******** 
@@ -126,12 +171,12 @@ Set up a network? (yes/no) [yes]: yes
 
 -- Network settings --
  
-Name [freenode]: libera
-Server host (host only): irc.libera.chat
+Name [libera]: libera
+Server host [irc.libera.chat]: irc.libera.chat
 Server uses SSL? (yes/no) [no]: yes
 Server port (1 to 65535) [6697]: 6697
 Server password (probably empty): ********
-Initial channels: 
+Initial channels:
 </pre>
 <h2>ZNC Usage</h2>
 <p>Command to start ERC client inside GNU Emacs: <code>M-x erc-tls</code>.</p>
@@ -139,7 +184,7 @@ Initial channels:
 IRC server: &lt;rpi-ip-address&gt;
 IRC port: 1025
 Nickname: rafael_bento
-Password: rafael_bento/libera:&lt;server-password&gt;
+Password: rafael_bento/libera:&lt;admin-password&gt;
 </pre>
 <p>Access <code>https://&lt;rpi-ip-address&gt;:1025</code> in browser to log in ZNC server
   to view and update configurations.</p>
