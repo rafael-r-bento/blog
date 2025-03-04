@@ -180,7 +180,10 @@ Initial channels:
 </pre>
 <h2>ZNC Usage</h2>
 <p>Access <code>https://&lt;rpi-ip-address&gt;:1025</code> in browser to log in ZNC server
-  to view and update configurations.</p>
+  to view and update configurations. Change <b>Buffer size</b> value (from Channels and Queries)
+  in <b>Your Settings</b> to <code>100000</code>. Other change that I made was to set the timestamp
+  format to <code>[%d/%m/%Y %H:%M:%S]</code> and timezone to <code>GMT-3</code>.
+  Save the settings pressing the <b>Save and return</b> button.</p>
 <p>Command to start ERC client inside GNU Emacs: <code>M-x erc-tls</code>.</p>
 <pre>
 Server: &lt;rpi-ip-address&gt;
