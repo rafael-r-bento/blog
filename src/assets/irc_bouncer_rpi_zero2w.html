@@ -145,10 +145,13 @@ connected devices in the network.</p>
 Install the <code>znc</code> package:
 </p>
 <pre class="terminal"># pacman -S znc</pre>
+<p>Enable and start the <code>znc</code> service:</p>
+<pre class="terminal"># systemctl enable znc
+# systemctl start znc</pre>
 <p>
-Configure <code>znc</code> (datailed instructions can be found in <a href="https://wiki.znc.in/Configuration">https://wiki.znc.in/Configuration</a>):
+Configure <code>znc</code> (datailed instructions can be found in <a href="https://wiki.znc.in/Configuration">https://wiki.znc.in/Configuration</a> and <a href="https://wiki.archlinux.org/title/ZNC">https://wiki.archlinux.org/title/ZNC</a>):
 </p>
-<pre class="terminal">$ znc --makeconf</pre><br>
+<pre class="terminal">$ znc --makeconf --datadir /var/lib/znc</pre><br>
 <pre>
 -- Global settings --
 
