@@ -3,12 +3,11 @@ import { ActivatedRoute } from '@angular/router';
 import { PostService } from './post.service';
 
 @Component({
-  selector: 'app-post',
-  standalone: true,
-  imports: [],
-  templateUrl: './post.component.html',
-  styleUrl: './post.component.css',
-  providers: [PostService]
+    selector: 'app-post',
+    imports: [],
+    templateUrl: './post.component.html',
+    styleUrl: './post.component.css',
+    providers: [PostService]
 })
 export class PostComponent implements OnInit {
   pageName: string | null = null;

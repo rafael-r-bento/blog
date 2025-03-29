@@ -7,12 +7,11 @@ import {MatBadgeModule} from '@angular/material/badge';
 import { Posts, Post, PostsRowsService } from '../posts-rows.service';
 
 @Component({
-  selector: 'app-home',
-  standalone: true,
-  imports: [RouterLink, MatFormFieldModule, MatInputModule, MatListModule, MatBadgeModule],
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.css',
-  providers: [PostsRowsService],
+    selector: 'app-home',
+    imports: [RouterLink, MatFormFieldModule, MatInputModule, MatListModule, MatBadgeModule],
+    templateUrl: './home.component.html',
+    styleUrl: './home.component.css',
+    providers: [PostsRowsService]
 })
 export class HomeComponent {
   items: any;
