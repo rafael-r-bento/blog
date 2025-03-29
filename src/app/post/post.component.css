@@ -15,101 +15,12 @@
   }
 }
 
-/* Code text */
-
-:host ::ng-deep code {
-  padding: 0 0.3em;
-  border-radius: 0;
-  background-color: #ebf1f5;
+:host ::ng-deep img {
+  max-width: 100%;
 }
 
-/* Code Blocks */
-
-:host ::ng-deep pre {
-    margin-top: 0;
-    margin-bottom: 0;
-    font-family: monospace, monospace;
-    display: block;
-    overflow-x: auto;
-    padding: 1em;
-}
-
-:host ::ng-deep pre.sourcecode-name {
-    background-color: #ebf1f5;
-    border: 2px solid #bcd;
-    border-bottom: none;
-}
-
-:host ::ng-deep pre.sourcecode {
-  background-color: #ebf1f5;
-  border: 2px solid #bcd;
-  border-top-style: dashed;
-}
-
-:host ::ng-deep pre.terminal {
-    color: white;
-    background-color: black;
-}
-
-/* Image with Copyright Notice */
-
-:host ::ng-deep .img-with-copyright {
-    display: block;
-    position: relative;
-    margin: 24px 0;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-@media only screen and (max-width: 600px) {
-    :host ::ng-deep .img-with-copyright {
-	width: 100%;
-    }
-}
-
-:host ::ng-deep .img-with-copyright img {
-    vertical-align: middle;
-    width: 100%;
-}
-
-:host ::ng-deep .img-license {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    background: rgba(0, 0, 0, 0.5);
-    color: #FFF;
-    font-size: 11px;
-    padding: 10px 20px;
-    text-align: center;
-    max-width: 297px;
-    margin: 0;
-    border: 0;
-}
-
-:host ::ng-deep .img-license span a {
-    text-decoration: none;
-    color: #FFF;
-    font-weight: bold;
-}
-
-:host ::ng-deep .img-with-copyright.tiny-img {
-    max-width: 320px;
-}
-
-:host ::ng-deep .img-with-copyright.small-img {
-    max-width: 428px;
-}
-
-:host ::ng-deep .img-with-copyright.normal-img {
-    max-width: 640px;
-}
-
-:host ::ng-deep .img-with-copyright.large-img {
-    max-width: 960px;
-}
-
-/* Tables */
-
-:host ::ng-deep table {
-  border: 1px solid black;
+#div-home-and-up {
+  text-align: right;
+  font-size: 70%;
+  white-space: nowrap;
 }

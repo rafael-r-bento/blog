@@ -1,13 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { MarkdownComponent } from 'ngx-markdown';
+import { RouterLink } from '@angular/router';
 import { PostService } from './post.service';
 
 @Component({
-    selector: 'app-post',
-    imports: [],
-    templateUrl: './post.component.html',
-    styleUrl: './post.component.css',
-    providers: [PostService]
+  selector: 'app-post',
+  imports: [MarkdownComponent, RouterLink],
+  templateUrl: './post.component.html',
+  styleUrl: './post.component.css',
+  providers: [PostService]
 })
 export class PostComponent implements OnInit {
   pageName: string | null = null;
@@ -25,6 +27,7 @@ export class PostComponent implements OnInit {
 
   loadPage() {
     this.pageName = this.activatedRoute.snapshot.paramMap.get('page');
+    console.log(this.pageName);
     if (this.pageName) {
       this.postService.getPageContent(this.pageName).subscribe(
         data => { this.content = data }

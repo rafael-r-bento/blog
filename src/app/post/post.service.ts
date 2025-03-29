@@ -10,6 +10,6 @@ export class PostService {
   constructor(private httpClient: HttpClient) { }
 
   getPageContent(pageName: string): Observable<string | null> {
-    return this.httpClient.get(`/assets/${pageName}.html`, { responseType: 'text' });
+    return this.httpClient.get(`/assets/${pageName}.md`, { responseType: 'text' });
   }
 }

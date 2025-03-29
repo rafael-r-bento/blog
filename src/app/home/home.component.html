@@ -1,16 +1,13 @@
 <main>
   <h1>Rafael Bento's Blog</h1>
-  <form class="example-form">
-    <mat-form-field class="example-full-width">
-      <mat-label>Search for:</mat-label>
-      <input type="text" matInput id="search">
-    </mat-form-field>
-  </form>
-  <mat-nav-list>
+  <h2>Posts · <a routerLink="snippets">Snippets</a> · <a routerLink="contact">Contact</a></h2>
+  <ul>
     @for (item of items; track item.title) {
-    <a mat-list-item routerLink="/post/{{ item.page }}" routerLinkActive="active" ariaCurrentWhenActive="page" class="list-item">
-      <strong>{{ item.title }}</strong>
-    </a>
+    <li>
+      <a routerLink="/post/{{ item.page }}" routerLinkActive="active" ariaCurrentWhenActive="page">
+        <strong>{{ item.title }}</strong>
+      </a>
+    </li>
     }
-  </mat-nav-list>
+  </ul>
 </main>

@@ -1,4 +1,10 @@
 @if (content) {
-  <main [innerHTML]="content">
-  </main>
+<div id="div-home-and-up">
+  <a accesskey="h" routerLink="/"> UP </a>
+  |
+  <a accesskey="H" routerLink="/"> HOME </a>
+</div>
+<markdown
+  [data]="content">
+</markdown>
 }
