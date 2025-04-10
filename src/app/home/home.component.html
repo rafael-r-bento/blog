@@ -1,13 +1,14 @@
 <main>
   <h1>Rafael Bento's Blog</h1>
   <h2>Posts · <a routerLink="snippets">Snippets</a> · <a routerLink="contact">Contact</a></h2>
-  <ul>
     @for (item of items; track item.title) {
-    <li>
-      <a routerLink="/post/{{ item.page }}" routerLinkActive="active" ariaCurrentWhenActive="page">
-        <strong>{{ item.title }}</strong>
-      </a>
-    </li>
+    <div class="card">
+      <img src="/assets/{{ item.thumbnail }}">
+      <p>
+        <a routerLink="/post/{{ item.page }}" routerLinkActive="active" ariaCurrentWhenActive="page">
+          <strong>{{ item.title }}</strong>
+        </a>
+      </p>
+    </div>
     }
-  </ul>
 </main>
