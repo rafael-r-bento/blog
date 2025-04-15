@@ -27,21 +27,6 @@ h1 {
 
 h2 { text-align: center; }
 
-.card {
-  float: left;
-  border-style: solid;
-  border-width: thin;
-  width: 256px;
-  height: 256px;
-  margin: 8px;
-}
+ul { list-style-type: none; }
 
-.card p {
-  text-align: center;
-}
-
-img {
-  width: 256px;
-  height: 128px;
-  border-bottom: thin solid black;
-}
+li { font-family: monospace, monospace; font-size: 1em; line-height: 2rem; }
