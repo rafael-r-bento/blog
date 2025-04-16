@@ -205,6 +205,13 @@ $ znc --makeconf --datadir /var/lib/znc
     Server password (probably empty): ********
     Initial channels:
 
+Start and enable ZNC service:
+
+```
+# systemctl start znc.service
+# systemctl enable znc.service
+```
+
 ## ZNC Usage
 
 Access `https://<rpi-ip-address>:1025` in browser to log in ZNC server
