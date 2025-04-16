@@ -1,5 +1,8 @@
 # Install open-ath9k-htc-firmware for AR9271 chipset WiFi USB
 
+I made a fork of **open-ath9k-htc-firmware** to successfully build
+on updated Arch Linux system.
+
 ```
 $ git clone https://github.com/rafael-r-bento/open-ath9k-htc-firmware.git
 $ cd open-ath9k-htc-firmware/
