@@ -3,12 +3,6 @@
   margin: auto 16px;
 }
 
-@media only screen and (min-width: 993px) {
-  :host {
-    margin: auto 30%;
-  }
-}
-
 @media only screen and (min-width: 601px) {
   :host {
     margin: auto 15%;
@@ -17,12 +11,6 @@
 
 :host ::ng-deep img {
   max-width: 100%;
-}
-
-#div-home-and-up {
-  text-align: right;
-  font-size: 70%;
-  white-space: nowrap;
 }
 
 :host ::ng-deep :not(pre) > code {

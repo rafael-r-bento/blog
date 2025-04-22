@@ -27,6 +27,10 @@ $blog-theme: mat.define-theme((
 // that you are using.
 :root {
   @include mat.all-component-themes($blog-theme);
+  @include mat.toolbar-overrides((
+    container-background-color: white,
+    container-text-color: black,
+  ));
 }
 
 // Comment out the line below if you want to use the pre-defined typography utility classes.

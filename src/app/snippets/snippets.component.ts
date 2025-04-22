@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
 import { MarkdownComponent } from 'ngx-markdown';
 
 @Component({
   selector: 'app-snippets',
-  imports: [RouterLink, MarkdownComponent],
+  imports: [MarkdownComponent],
   templateUrl: './snippets.component.html',
   styleUrl: './snippets.component.css'
 })
