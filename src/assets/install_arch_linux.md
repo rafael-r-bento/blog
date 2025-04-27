@@ -3,31 +3,29 @@
 This particular installation assumes boot in UEFI mode and SystemD init system.
 For detailed instructions, see [Installation Guide](https://wiki.archlinux.org/title/Installation_guide).
 
-## Download
+## Pre-installation
 
 First, download the Arch Linux ISO and verify its signature and checksum.
 
 ```
-$ wget https://archlinux.c3sl.ufpr.br/iso/2024.07.01/archlinux-2024.07.01-x86_64.iso
-$ wget https://archlinux.org/iso/2024.07.01/archlinux-2024.07.01-x86_64.iso.sig
-$ gpg --auto-key-locate clear,wkd -v --locate-external-key pierre@archlinux.org    
-$ gpg --keyserver-options auto-key-retrieve --verify archlinux-2024.07.01-x86_64.iso.sig
-$ wget https://archlinux.org/iso/2024.07.01/sha256sums.txt
+$ wget https://archlinux.c3sl.ufpr.br/iso/2025.04.01/archlinux-2025.04.01-x86_64.iso
+$ wget https://archlinux.org/iso/2025.04.01/archlinux-2025.04.01-x86_64.iso.sig
+$ gpg --auto-key-locate clear,wkd -v --locate-external-key pierre@archlinux.org
+$ gpg --keyserver-options auto-key-retrieve --verify archlinux-2025.04.01-x86_64.iso.sig archlinux-2025.04.01-x86_64.iso
+$ wget https://archlinux.org/iso/2025.04.01/sha256sums.txt
 $ sha256sum -c sha256sums.txt
 ```
-
-## Pre-installation
 
 Write the Arch Linux ISO media to the USB flash drive (in this case, the device
 file for the USB drive is */dev/sdb*; verify the correct device file name
 before proceding to run the command below):
 
 ```
-# dd bs=4M if=archlinux-2024.07.01-x86_64.iso of=/dev/sdb conv=fsync oflag=direct status=progress
+# dd bs=4M if=archlinux-2025.04.01-x86_64.iso of=/dev/sdb conv=fsync oflag=direct status=progress
 ```
 
 Boot by pressing F11 or similar. Select "Arch Linux install medium (x86\_64,
-UEFI)" from the live medium menu.
+UEFI)" and press `Enter` from the live medium menu.
 
 ![Step on boot installation showing five options](/assets/install_archlinux1.png)
 
@@ -185,9 +183,7 @@ Exit **chroot**, un-mount the partitions and reboot the system:
 
 ```
 # exit
-# swapoff /dev/sda2
-# umount /mnt/boot
-# umount /mnt
+# umount -R /mnt
 # reboot
 ```
 

@@ -1,3 +1,9 @@
+@media only screen and (min-width: 601px) {
+  :host {
+    margin: auto 15%;
+  }
+}
+
 @font-face {
   font-family: "Bungee Shade";
   src: url("../../assets/fonts/BungeeShade-Regular.woff2") format('woff2');
@@ -5,7 +11,6 @@
 
 .logo {
   font-family: "Bungee Shade", sans-serif;
-  text-align: center;
 }
 
 nav {
