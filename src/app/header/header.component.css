@@ -1,3 +1,7 @@
+:host {
+  margin: auto 16px;
+}
+
 @media only screen and (min-width: 601px) {
   :host {
     margin: auto 15%;
