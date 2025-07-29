@@ -39,6 +39,8 @@ What you will need:
 - Raspberry Pi Zero 2 W
 - Micro SD card
 - Raspberry Pi Micro USB Power Supply
+- USB to Micro USB adapter
+- HDMI to Mini HDMI adapter
 
 ## Arch Linux ARM installation
 
@@ -48,6 +50,7 @@ Download script `install_archlinux_rpi.sh` and run with sudo rights:
 
 ```
 $ wget https://raw.githubusercontent.com/rafael-r-bento/install-archlinuxarm/refs/heads/master/install_archlinux_rpi.sh
+$ chmod a+x install_archlinux_rpi.sh
 $ sudo ./install_archlinux_rpi.sh sdb
 ```
 
@@ -89,10 +92,11 @@ Reboot the system:
 # reboot
 ```
 
-Enable **iwd** service:
+Enable and start **iwd** service:
 
 ```
 # systemctl enable iwd.service
+# systemctl start iwd.service
 ```
 
 List all Wi-Fi devices:
@@ -117,6 +121,12 @@ configuration.
 ```
 [General]
 EnableNetworkConfiguration=true
+```
+
+Test internet connection:
+
+```
+# ping archlinux.org
 ```
 
 Update the system clock:
@@ -146,7 +156,6 @@ You can disconnect the keyboard and monitor.
 
 Command to ssh into the Pi Zero:
 
-
 > $ ssh *USERNAME*@*RPI-PI-ADDRESS*
 
 ```
@@ -164,14 +173,8 @@ Install the **znc** package:
 # pacman -S znc
 ```
 
-Enable and start the **znc** service:
-
-```
-# systemctl enable znc
-# systemctl start znc
-```
-
-Configure **znc** (datailed instructions can be found in [https://wiki.znc.in/Configuration](https://wiki.znc.in/Configuration) and [https://wiki.archlinux.org/title/ZNC](https://wiki.archlinux.org/title/ZNC)):
+Configure **znc** (datailed instructions can be found in [https://wiki.znc.in/Configuration](https://wiki.znc.in/Configuration)
+and [https://wiki.archlinux.org/title/ZNC](https://wiki.archlinux.org/title/ZNC)):
 
 ```
 $ znc --makeconf --datadir /var/lib/znc
@@ -200,16 +203,16 @@ $ znc --makeconf --datadir /var/lib/znc
  
     Name [libera]: libera
     Server host [irc.libera.chat]: irc.libera.chat
-    Server uses SSL? (yes/no) [no]: yes
+    Server uses SSL? (yes/no) [yes]: yes
     Server port (1 to 65535) [6697]: 6697
     Server password (probably empty): ********
     Initial channels:
 
-Start and enable ZNC service:
+Enable and start ZNC service:
 
 ```
-# systemctl start znc.service
 # systemctl enable znc.service
+# systemctl start znc.service
 ```
 
 ## ZNC Usage
