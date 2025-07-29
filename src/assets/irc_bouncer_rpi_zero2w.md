@@ -177,7 +177,8 @@ Configure **znc** (datailed instructions can be found in [https://wiki.znc.in/Co
 and [https://wiki.archlinux.org/title/ZNC](https://wiki.archlinux.org/title/ZNC)):
 
 ```
-$ znc --makeconf --datadir /var/lib/znc
+# su -s /bin/bash znc
+[znc]$ znc --makeconf --datadir /var/lib/znc
 ```
 
     -- Global settings --
