@@ -20,11 +20,6 @@ export class PostsRowsService {
     private http: HttpClient
   ) { }
 
-  getRows() {
-    let posts: NodeListOf<Element> = document.querySelectorAll(".list-item");
-    return posts;
-  }
-
   listPosts(): Observable<Posts> {
     return this.http.get<Posts>('assets/data_posts.json');
   }
