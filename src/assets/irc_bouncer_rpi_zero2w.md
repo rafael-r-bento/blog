@@ -221,8 +221,13 @@ Enable and start ZNC service:
 Access `https://<rpi-ip-address>:1025` in browser to log in ZNC server
 to view and update configurations. Change **Buffer size** value (from Channels
 and Queries) in **Your Settings** to `100000`. Other change that I made was to
-set the timestamp format to `[%d/%m/%Y %H:%M:%S]` and timezone to `GMT-3`. Save
-the settings pressing the **Save and return** button.
+set the timezone to `GMT-3`. Save the settings pressing the **Save and return**
+button.
+
+Also configure which message types you will be notified by settting
+`C-h v erc-track-exclude-types`.
+
+![erc-track-exclude-types variable configuration](/assets/erc_track_exclude_types.png)
   
 Command to start ERC client inside GNU Emacs: `M-x erc-tls`.
 
