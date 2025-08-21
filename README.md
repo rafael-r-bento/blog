@@ -2,6 +2,10 @@
 
 A personal blog site.
 
+![](./images/posts.png)
+
+![](./images/contact.png)
+
 ## Running
 
 After clone the project, install dependencies with `npm install`. 
