@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { Posts, Post, PostsRowsService } from '../posts-rows.service';
+import { Post, PostsRowsService } from '../posts-rows.service';
 
 @Component({
   selector: 'app-home',
@@ -10,20 +10,17 @@ import { Posts, Post, PostsRowsService } from '../posts-rows.service';
   providers: [PostsRowsService]
 })
 export class HomeComponent {
-  items: any;
+  private postsService = inject(PostsRowsService);
+
+  items: Post[] = [];
   
-  constructor(
-    private postsService: PostsRowsService,
-  ) {
+  constructor() {
     this.showPosts();
   }
 
-  ngOnInit() {
-  }
-
   showPosts(): void {
-    this.postsService.listPosts().subscribe((response: Posts) => {
-      this.items = response.items;
+    this.postsService.listPosts().subscribe((response: Post[]) => {
+      this.items = response;
       this.items.sort((a: Post, b: Post) => (a.title > b.title) ? 1 : ((b.title > a.title) ? -1 : 0));
     });
   }

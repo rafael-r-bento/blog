@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MarkdownComponent } from 'ngx-markdown';
 import { PostService } from './post.service';
@@ -11,14 +11,11 @@ import { PostService } from './post.service';
   providers: [PostService]
 })
 export class PostComponent implements OnInit {
+  private activatedRoute = inject(ActivatedRoute);
+  private postService = inject(PostService);
+
   pageName: string | null = null;
   content: string | null = null;
-  constructor(
-    private activatedRoute: ActivatedRoute,
-    private postService: PostService
-  ) {
-
-  }
 
   ngOnInit() {
     this.loadPage();

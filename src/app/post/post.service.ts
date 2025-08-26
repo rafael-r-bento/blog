@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
@@ -6,8 +6,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class PostService {
+  private httpClient = inject(HttpClient);
 
-  constructor(private httpClient: HttpClient) { }
 
   getPageContent(pageName: string): Observable<string | null> {
     return this.httpClient.get(`/assets/${pageName}.md`, { responseType: 'text' });

@@ -1,7 +1,6 @@
-import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { of } from 'rxjs';
-import { delay } from 'rxjs/operators';
 import { Posts, PostsRowsService } from '../posts-rows.service';
 
 import { HomeComponent } from './home.component';
@@ -11,7 +10,7 @@ describe('HomeComponent', () => {
   let component: HomeComponent;
   let fixture: ComponentFixture<HomeComponent>;
   let service: PostsRowsService;
-  let posts: Posts = { items: [
+  const posts: Posts = { items: [
     {
       "title": "Parabola GNU/Linux-libre (x86_64) Installation",
       "page": "install_parabola",
