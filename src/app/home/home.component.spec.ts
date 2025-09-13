@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { of } from 'rxjs';
-import { Posts, PostsRowsService } from '../posts-rows.service';
+import { Post, PostsRowsService } from '../posts-rows.service';
 
 import { HomeComponent } from './home.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
@@ -10,28 +10,24 @@ describe('HomeComponent', () => {
   let component: HomeComponent;
   let fixture: ComponentFixture<HomeComponent>;
   let service: PostsRowsService;
-  const posts: Posts = { items: [
+  const posts: Post[] = [
     {
       "title": "Parabola GNU/Linux-libre (x86_64) Installation",
-      "page": "install_parabola",
-      "category": "Operating Systems"
+      "page": "install_parabola"
     },
     {
       "title": "Arch Linux Installation",
-      "page": "install_arch_linux",
-      "category": "Operating Systems"
+      "page": "install_arch_linux"
     },
     {
       "title": "Arch Linux Installation",
-      "page": "install_arch_linux",
-      "category": "Operating Systems"
+      "page": "install_arch_linux"
     },
     {
       "title": "Build a Package from APT repository and Create a Patch",
-      "page": "build_from_source_with_apt",
-      "category": "Software"
+      "page": "build_from_source_with_apt"
     }
-  ] };
+  ];
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -55,6 +51,6 @@ describe('HomeComponent', () => {
   it('should call listPosts and return list of posts', () => {
     spyOn(service, 'listPosts').and.returnValue(of(posts));
     component.showPosts();
-    expect(component.items).toEqual(posts.items);
+    expect(component.items).toEqual(posts);
   });
 });

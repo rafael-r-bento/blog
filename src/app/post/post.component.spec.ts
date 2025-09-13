@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ActivatedRoute, convertToParamMap } from '@angular/router';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { of } from 'rxjs';
 
 import { PostComponent } from './post.component';
@@ -29,7 +29,6 @@ describe('PostComponent', () => {
     .compileComponents();
 
     fixture = TestBed.createComponent(PostComponent);
-    httpTestingController = TestBed.inject(HttpTestingController);
     component = fixture.componentInstance;
     service = fixture.debugElement.injector.get(PostService);
     fixture.detectChanges();
