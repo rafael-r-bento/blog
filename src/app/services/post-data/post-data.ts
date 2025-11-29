@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class PostService {
+export class PostData {
   private httpClient = inject(HttpClient);
 
 

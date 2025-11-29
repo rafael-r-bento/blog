@@ -3,17 +3,17 @@ import { ActivatedRoute, convertToParamMap } from '@angular/router';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { of } from 'rxjs';
 
-import { PostComponent } from './post.component';
-import { PostService } from './post.service';
+import { Post } from './post';
+import { PostData } from '../../services/post-data/post-data';
 
-describe('PostComponent', () => {
-  let component: PostComponent;
-  let fixture: ComponentFixture<PostComponent>;
-  let service: PostService;
+describe('Post', () => {
+  let component: Post;
+  let fixture: ComponentFixture<Post>;
+  let service: PostData;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PostComponent, HttpClientTestingModule],
+      imports: [Post, HttpClientTestingModule],
       providers: [
         {
           provide: ActivatedRoute,
@@ -23,14 +23,14 @@ describe('PostComponent', () => {
             }
           }
         },
-        PostService
+        PostData
       ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(PostComponent);
+    fixture = TestBed.createComponent(Post);
     component = fixture.componentInstance;
-    service = fixture.debugElement.injector.get(PostService);
+    service = fixture.debugElement.injector.get(PostData);
     fixture.detectChanges();
   });
 

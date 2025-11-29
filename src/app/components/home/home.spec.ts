@@ -1,15 +1,15 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { of } from 'rxjs';
-import { Post, PostsRowsService } from '../posts-rows.service';
+import { Post, PostsRowsData } from '../../services/posts-rows-data/posts-rows-data';
 
-import { HomeComponent } from './home.component';
+import { Home } from './home';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
-describe('HomeComponent', () => {
-  let component: HomeComponent;
-  let fixture: ComponentFixture<HomeComponent>;
-  let service: PostsRowsService;
+describe('Home', () => {
+  let component: Home;
+  let fixture: ComponentFixture<Home>;
+  let service: PostsRowsData;
   const posts: Post[] = [
     {
       "title": "Parabola GNU/Linux-libre (x86_64) Installation",
@@ -32,15 +32,15 @@ describe('HomeComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      providers: [provideAnimations(), PostsRowsService]
+      providers: [provideAnimations(), PostsRowsData]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(HomeComponent);
+    fixture = TestBed.createComponent(Home);
     component = fixture.componentInstance;
-    service = fixture.debugElement.injector.get(PostsRowsService);
+    service = fixture.debugElement.injector.get(PostsRowsData);
     fixture.detectChanges();
   });
 

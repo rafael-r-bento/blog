@@ -1,24 +1,24 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClient } from '@angular/common/http';
 
-import { PostsRowsService } from './posts-rows.service';
+import { PostsRowsData } from './posts-rows-data';
 
-describe('PostsRowsService', () => {
-  let service: PostsRowsService;
+describe('PostsRowsData', () => {
+  let service: PostsRowsData;
   let httpClientSpy: jasmine.SpyObj<HttpClient>;
 
   beforeEach(() => {
     httpClientSpy = jasmine.createSpyObj('HttpClient', ['get']);
     TestBed.configureTestingModule({
       providers: [
-        PostsRowsService,
+        PostsRowsData,
         {
           provide: HttpClient,
           useValue: httpClientSpy
         }
       ]
     });
-    service = TestBed.inject(PostsRowsService);
+    service = TestBed.inject(PostsRowsData);
     httpClientSpy = TestBed.inject(HttpClient) as jasmine.SpyObj<HttpClient>;
   });
 

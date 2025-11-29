@@ -1,16 +1,16 @@
 import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { Post, PostsRowsService } from '../posts-rows.service';
+import { Post, PostsRowsData } from '../../services/posts-rows-data/posts-rows-data';
 
 @Component({
   selector: 'app-home',
   imports: [RouterLink],
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.css',
-  providers: [PostsRowsService]
+  templateUrl: './home.html',
+  styleUrl: './home.css',
+  providers: [PostsRowsData]
 })
-export class HomeComponent {
-  private postsService = inject(PostsRowsService);
+export class Home {
+  private postsService = inject(PostsRowsData);
 
   items: Post[] = [];
   

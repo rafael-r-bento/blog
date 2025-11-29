@@ -10,7 +10,7 @@ export interface Post {
 @Injectable({
   providedIn: 'root'
 })
-export class PostsRowsService {
+export class PostsRowsData {
   private http = inject(HttpClient);
 
 

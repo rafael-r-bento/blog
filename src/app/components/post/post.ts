@@ -1,18 +1,18 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MarkdownComponent } from 'ngx-markdown';
-import { PostService } from './post.service';
+import { PostData } from '../../services/post-data/post-data';
 
 @Component({
   selector: 'app-post',
   imports: [MarkdownComponent],
-  templateUrl: './post.component.html',
-  styleUrl: './post.component.css',
-  providers: [PostService]
+  templateUrl: './post.html',
+  styleUrl: './post.css',
+  providers: [PostData]
 })
-export class PostComponent implements OnInit {
+export class Post implements OnInit {
   private activatedRoute = inject(ActivatedRoute);
-  private postService = inject(PostService);
+  private postService = inject(PostData);
 
   pageName: string | null = null;
   content: string | null = null;
