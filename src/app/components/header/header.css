@@ -1,11 +1,7 @@
 :host {
-  margin: auto 16px;
-}
-
-@media only screen and (min-width: 601px) {
-  :host {
-    margin: auto 15%;
-  }
+  margin: 0;
+  padding: 0 16px;
+  background-color: pink;
 }
 
 @font-face {

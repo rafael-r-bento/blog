@@ -22,3 +22,9 @@
   font-family: monospace,monospace;
   border: 1px solid #dadde3;
 }
+
+:host ::ng-deep p {
+  font-size: 1em;
+  line-height: 1.2em;
+  font-weight: 500;
+}

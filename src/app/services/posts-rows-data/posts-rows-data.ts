@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 export interface Post {
   title: string;
   page: string;
+  imagePath: string;
 }
 
 @Injectable({

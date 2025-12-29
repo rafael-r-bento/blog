@@ -1,11 +1,13 @@
 <main>
-    <ul>
-      @for (item of items; track item.title) {
-      <li>
-        <a routerLink="/post/{{ item.page }}" routerLinkActive="active" ariaCurrentWhenActive="page">
-          <strong>{{ item.title }}</strong>
-        </a>
-      </li>
-      }
-    </ul>
+  <div class="card-grid">
+  @for (item of items(); track item.title) {
+  <mat-card class="clickable-card" appearance="outlined" [routerLink]="['/post', item.page]">
+    <img mat-card-image [src]="item.imagePath">
+    <mat-divider></mat-divider>
+    <mat-card-content>
+      <p>{{ item.title }}</p>
+    </mat-card-content>
+  </mat-card>
+  }
+  </div>
 </main>

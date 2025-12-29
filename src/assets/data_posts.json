@@ -1,26 +1,32 @@
 [
   {
     "title": "Build a Package from APT repository and Create a Patch",
-    "page": "build_from_source_with_apt"
+    "page": "build_from_source_with_apt",
+    "imagePath": "assets/pluma_installed.png"
   },
   {
     "title": "Parabola GNU/Linux-libre (x86_64) Installation",
-    "page": "install_parabola"
+    "page": "install_parabola",
+    "imagePath": "assets/install_parabola3.png"
   },
   {
     "title": "Kanboard Installation",
-    "page": "kanboard_installation"
+    "page": "kanboard_installation",
+    "imagePath": "assets/kanboard_in_browser.png"
   },
   {
     "title": "Arch Linux Installation",
-    "page": "install_arch_linux"
+    "page": "install_arch_linux",
+    "imagePath": "assets/install_archlinux3.png"
   },
   {
     "title": "Setup an IRC bouncer on Raspberry Pi Zero 2 W",
-    "page": "irc_bouncer_rpi_zero2w"
+    "page": "irc_bouncer_rpi_zero2w",
+    "imagePath": "assets/rpi_zero2w_diagram.png"
   },
   {
     "title": "Install open-ath9k-htc-firmware for AR9271 chipset WiFi USB",
-    "page": "install_ar9271_wifi"
+    "page": "install_ar9271_wifi",
+    "imagePath": "assets/favicon.ico"
   }
 ]
