@@ -2,7 +2,7 @@
   <div class="card-grid">
   @for (item of items(); track item.title) {
   <mat-card class="clickable-card" appearance="outlined" [routerLink]="['/post', item.page]">
-    <img mat-card-image [src]="item.imagePath">
+    <img mat-card-image [src]="item.imagePath" alt="image from card post">
     <mat-divider></mat-divider>
     <mat-card-content>
       <p>{{ item.title }}</p>

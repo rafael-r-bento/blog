@@ -10,22 +10,21 @@ describe('Home', () => {
   let component: Home;
   let fixture: ComponentFixture<Home>;
   let service: PostsRowsData;
-  const posts: Post[] = [
+  const posts = [
     {
       "title": "Parabola GNU/Linux-libre (x86_64) Installation",
-      "page": "install_parabola"
+      "page": "install_parabola",
+      "imagePath": "assets/install_parabola3.png"
     },
     {
       "title": "Arch Linux Installation",
-      "page": "install_arch_linux"
-    },
-    {
-      "title": "Arch Linux Installation",
-      "page": "install_arch_linux"
+      "page": "install_arch_linux",
+      "imagePath": "assets/install_archlinux3.png"
     },
     {
       "title": "Build a Package from APT repository and Create a Patch",
-      "page": "build_from_source_with_apt"
+      "page": "build_from_source_with_apt",
+      "imagePath": "assets/pluma_installed.png"
     }
   ];
 
@@ -33,11 +32,8 @@ describe('Home', () => {
     await TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
       providers: [provideAnimations(), PostsRowsData]
-    })
-    .compileComponents();
-  });
+    }).compileComponents();
 
-  beforeEach(() => {
     fixture = TestBed.createComponent(Home);
     component = fixture.componentInstance;
     service = fixture.debugElement.injector.get(PostsRowsData);
@@ -51,6 +47,6 @@ describe('Home', () => {
   it('should call listPosts and return list of posts', () => {
     spyOn(service, 'listPosts').and.returnValue(of(posts));
     component.showPosts();
-    expect(component.items).toEqual(posts);
+    expect(component.items()).toEqual(posts);
   });
 });
