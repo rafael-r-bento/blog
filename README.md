@@ -1,6 +1,6 @@
 # Blog
 
-A personal blog site.
+A blog site template.
 
 ![](./images/posts.png)
 
