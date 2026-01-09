@@ -28,7 +28,7 @@ $blog-theme: mat.define-theme((
 :root {
   @include mat.all-component-themes($blog-theme);
   @include mat.toolbar-overrides((
-    container-background-color: white,
+    container-background-color: lightblue,
     container-text-color: black,
   ));
 }

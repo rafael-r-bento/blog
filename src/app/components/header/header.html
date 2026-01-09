@@ -1,5 +1,16 @@
-<h1 class="logo">John Doe's Blog</h1>
-<nav>
-  <span class="toolbar-link"><a routerLink="/" accesskey="P">Posts</a></span>
-  <span class="toolbar-link"><a routerLink="contact" accesskey="C">Contact</a></span>
-</nav>
+<mat-toolbar>
+  <mat-toolbar-row>
+    <span class="header__logo">John Doe's Blog</span>
+    <span class="header__spacer"></span>
+    <nav class="header__nav header__nav--desktop">
+      <a routerLink="/" accesskey="P"><span>Posts</span></a>
+      <a routerLink="contact" accesskey="C"><span>Contact</span></a>
+    </nav>
+  </mat-toolbar-row>
+  <mat-toolbar-row class="header__row--mobile">
+    <nav class="header__nav">
+      <a routerLink="/" accesskey="P"><span>Posts</span></a>
+      <a routerLink="contact" accesskey="C"><span>Contact</span></a>
+    </nav>
+  </mat-toolbar-row>
+</mat-toolbar>

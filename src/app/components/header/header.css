@@ -1,24 +1,37 @@
-:host {
-  margin: 0;
-  padding: 0 16px;
-  background-color: rgb(152, 152, 152);
-}
-
 @font-face {
   font-family: "Bungee Shade";
   src: url("../../../assets/fonts/BungeeShade-Regular.woff2") format('woff2');
 }
 
-.logo {
+.header__logo {
   font-family: "Bungee Shade", sans-serif;
+  font-size: xx-large;
 }
 
-nav {
-  text-align: right;
+.header__nav a {
   font-size: 70%;
-  white-space: nowrap;
+  padding: 0px 8px;
 }
 
-.toolbar-link a {
-  padding: 0px 8px;
+.header__nav a:hover {
+  color: red;
+}
+
+.header__row--mobile {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .header__nav--desktop {
+    display: none;
+  }
+
+  .header__row--mobile {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.header__spacer {
+  flex: 1 1 auto;
 }
