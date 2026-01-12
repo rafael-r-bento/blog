@@ -1,7 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MarkdownComponent } from 'ngx-markdown';
-import { PostData } from '../../services/post-data/post-data';
+import { PostData } from 'src/app/services/post-data/post-data';
 
 @Component({
   selector: 'app-post',

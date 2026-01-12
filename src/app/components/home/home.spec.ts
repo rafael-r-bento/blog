@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { of } from 'rxjs';
-import { PostsRowsData } from '../../services/posts-rows-data/posts-rows-data';
+import { PostsRowsData } from 'src/app/services/posts-rows-data/posts-rows-data';
 
 import { Home } from './home';
 import { HttpClientTestingModule } from '@angular/common/http/testing';

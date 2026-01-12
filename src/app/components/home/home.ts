@@ -1,6 +1,6 @@
 import { Component, inject, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { Post, PostsRowsData } from '../../services/posts-rows-data/posts-rows-data';
+import { Post, PostsRowsData } from 'src/app/services/posts-rows-data/posts-rows-data';
 import {MatCardModule} from '@angular/material/card';
 import {MatDividerModule} from '@angular/material/divider';
 

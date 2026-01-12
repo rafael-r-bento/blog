@@ -4,7 +4,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { of } from 'rxjs';
 
 import { Post } from './post';
-import { PostData } from '../../services/post-data/post-data';
+import { PostData } from 'src/app/services/post-data/post-data';
 
 describe('Post', () => {
   let component: Post;
