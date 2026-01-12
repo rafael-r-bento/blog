@@ -22,6 +22,11 @@ describe('Home', () => {
       "imagePath": "assets/install_archlinux3.png"
     },
     {
+      "title": "Arch Linux Installation",
+      "page": "install_arch_linux",
+      "imagePath": "assets/favicon.ico"
+    },
+    {
       "title": "Build a Package from APT repository and Create a Patch",
       "page": "build_from_source_with_apt",
       "imagePath": "assets/pluma_installed.png"
