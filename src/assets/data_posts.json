@@ -1,27 +1,27 @@
 [
   {
-    "title": "Post One Title",
+    "title": "Post 1 Title",
     "page": "post_one",
     "imagePath": "assets/desktop_with_gnome.png"
   },
   {
-    "title": "Post Two Title",
-    "page": "post_two",
-    "imagePath": "assets/favicon.ico"
-  },
-  {
-    "title": "Post Three Title",
+    "title": "Post 3 Title",
     "page": "post_three",
     "imagePath": "assets/favicon.ico"
   },
   {
-    "title": "Post Four Title",
-    "page": "post_four",
-    "imagePath": "assets/desktop_with_gnome_2nd.png"
-  },
-  {
-    "title": "Post Five Title",
+    "title": "Post 5 Title",
     "page": "post_five",
     "imagePath": "assets/favicon.ico"
+  },
+  {
+    "title": "Post 2 Title",
+    "page": "post_two",
+    "imagePath": "assets/favicon.ico"
+  },
+  {
+    "title": "Post 4 Title",
+    "page": "post_four",
+    "imagePath": "assets/desktop_with_gnome_2nd.png"
   }
 ]

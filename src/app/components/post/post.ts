@@ -8,7 +8,6 @@ import { PostData } from 'src/app/services/post-data/post-data';
   imports: [MarkdownComponent],
   templateUrl: './post.html',
   styleUrl: './post.css',
-  providers: [PostData]
 })
 export class Post implements OnInit {
   private activatedRoute = inject(ActivatedRoute);
@@ -23,7 +22,6 @@ export class Post implements OnInit {
 
   loadPage() {
     this.pageName = this.activatedRoute.snapshot.paramMap.get('page');
-    console.log(this.pageName);
     if (this.pageName) {
       this.postService.getPageContent(this.pageName).subscribe(
         data => { this.content = data }

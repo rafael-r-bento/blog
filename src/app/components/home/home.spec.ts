@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { of } from 'rxjs';
 import { PostsRowsData } from 'src/app/services/posts-rows-data/posts-rows-data';
 
 import { Home } from './home';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('Home', () => {
   let component: Home;
   let fixture: ComponentFixture<Home>;
-  let service: PostsRowsData;
-  const posts = [
+  let postsServiceSpy: jasmine.SpyObj<PostsRowsData>;
+  const mockPosts = [
     {
       "title": "Parabola GNU/Linux-libre (x86_64) Installation",
       "page": "install_parabola",
@@ -34,15 +34,22 @@ describe('Home', () => {
   ];
 
   beforeEach(async () => {
+    postsServiceSpy = jasmine.createSpyObj('PostsRowsData', [
+      'listPosts'
+    ]);
+
+    postsServiceSpy.listPosts.and.returnValue(of(mockPosts));
+
     await TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
-      providers: [provideAnimations(), PostsRowsData]
+      imports: [RouterTestingModule],
+      providers: [
+        provideAnimations(),
+        { provide: PostsRowsData, useValue: postsServiceSpy }
+      ]
     }).compileComponents();
 
     fixture = TestBed.createComponent(Home);
     component = fixture.componentInstance;
-    service = fixture.debugElement.injector.get(PostsRowsData);
-    fixture.detectChanges();
   });
 
   it('should create', () => {
@@ -50,8 +57,10 @@ describe('Home', () => {
   });
 
   it('should call listPosts and return list of posts', () => {
-    spyOn(service, 'listPosts').and.returnValue(of(posts));
     component.showPosts();
-    expect(component.items()).toEqual(posts);
+    const sortedPosts = [...mockPosts].sort((a, b) =>
+      (a.title > b.title) ? 1 : ((b.title > a.title) ? -1 : 0)
+    );
+    expect(component.items()).toEqual(sortedPosts);
   });
 });

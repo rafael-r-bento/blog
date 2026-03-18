@@ -8,8 +8,7 @@ import {MatDividerModule} from '@angular/material/divider';
   selector: 'app-home',
   imports: [RouterLink, MatCardModule, MatDividerModule],
   templateUrl: './home.html',
-  styleUrl: './home.css',
-  providers: [PostsRowsData]
+  styleUrl: './home.css'
 })
 export class Home {
   private postsService = inject(PostsRowsData);
@@ -22,8 +21,11 @@ export class Home {
 
   showPosts(): void {
     this.postsService.listPosts().subscribe((response: Post[]) => {
-      this.items.set(response);
-      this.items.set(this.items().sort((a: Post, b: Post) => (a.title > b.title) ? 1 : ((b.title > a.title) ? -1 : 0)));
+      this.items.set(
+        [...response].sort((a: Post, b: Post) =>
+          (a.title > b.title) ? 1 : ((b.title > a.title) ? -1 : 0)
+        )
+      );
     });
   }
 }
