@@ -8,9 +8,7 @@ export interface Post {
   imagePath: string;
 }
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class PostsRowsData {
   private http = inject(HttpClient);
 

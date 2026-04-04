@@ -5,6 +5,7 @@
   src: url('./assets/fonts/Poppins-Regular.ttf') format('truetype');
   font-weight: 500;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -12,6 +13,7 @@
   src: url('./assets/fonts/Poppins-Italic.ttf') format('truetype');
   font-weight: 500;
   font-style: italic;
+  font-display: swap;
 }
 
 @font-face {
@@ -19,6 +21,7 @@
   src: url('./assets/fonts/Poppins-Bold.ttf') format('truetype');
   font-weight: 700;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -26,6 +29,7 @@
   src: url('./assets/fonts/Poppins-BoldItalic.ttf') format('truetype');
   font-weight: 700;
   font-style: italic;
+  font-display: swap;
 }
 
 html, body { height: 100%; }

@@ -2,7 +2,7 @@
   {
     "title": "Post 1 Title",
     "page": "post_one",
-    "imagePath": "assets/desktop_with_gnome.png"
+    "imagePath": "assets/desktop_with_gnome.webp"
   },
   {
     "title": "Post 3 Title",
@@ -22,6 +22,6 @@
   {
     "title": "Post 4 Title",
     "page": "post_four",
-    "imagePath": "assets/desktop_with_gnome_2nd.png"
+    "imagePath": "assets/desktop_with_gnome_2nd.webp"
   }
 ]

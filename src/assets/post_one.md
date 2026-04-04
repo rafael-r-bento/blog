@@ -22,7 +22,7 @@ ullamcorper imperdiet. Proin `non mauris` non neque gravida cursus vitae nec
 sapien. In a maximus nulla, **quis** imperdiet lectus. Donec volutpat facilisis
 quam at tristique. Nullam mollis est eget sagittis sollicitudin.
 
-![Desktop with Gnome](/assets/desktop_with_gnome.png)
+![Desktop with Gnome](/assets/desktop_with_gnome.webp)
 
 #### **`/etc/NetworkManager/conf.d/wifi_backend.conf`**
 ```
